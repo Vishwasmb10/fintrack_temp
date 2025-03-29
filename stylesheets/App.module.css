@@ -1,0 +1,31 @@
+.addBtn{
+    position:fixed;
+    background-color: white;
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 10px 15px 10px 15px;
+    border-radius: 12px;
+    font-size: 25px;
+    color: purple;
+    bottom: 30px;
+    right: 30px;
+    z-index: 101;
+}
+
+.form{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.664);
+    top:0;
+    z-index: 100;
+    height:100%;
+    width: 100%;
+    /* display: none; */
+}
+
+.cards{
+    display: grid;
+    gap: 30px 0px;
+    grid-template-columns: repeat(auto-fit,minmax(0px,350px));
+    padding: 35px;
+}

@@ -1,0 +1,23 @@
+.form form{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 15px;
+    /* height: 100%; */
+}
+
+form input{
+    width:200px;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
