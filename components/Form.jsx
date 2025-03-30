@@ -41,7 +41,7 @@ export default function Form(props){
             <label htmlFor="amt">Amount</label>
             <input type="text" name="amt" id="amt" value={amount} onChange={handleAmount}/>
             
-            <button type="button" onClick={()=>{saveHandle();}}>Save</button>
+            <button type="button" onClick={()=>{saveHandle();}} className={style.saveBtn}>Save</button>
         </form>
     </div>);
 }
