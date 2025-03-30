@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import style from '../stylesheets/Form.module.css';
 import Card from './Card';
+import { supabase } from '../src/supabaseClient';
 
 export default function Form(props){
     const [product,setProduct]=useState("");
     const [quantity,setQuantity]=useState();
     const [amount,setAmount]=useState();
 
-    function saveHandle(){
+    async function saveHandle(){
         if(product=="" || quantity=="" || amount=="" )
             return;
+        
+        const { error } = await supabase.from('debit').insert([{ product, quantity,amount }]);
+        if (error) console.error('Error adding user:', error);
+        else alert('Product added successfully!');
         props.setCards((cards)=>{return[...cards,<Card key="product" product={product} quantity={quantity} amount={amount} />]});
+        
         setProduct("");
         setQuantity("");
         setAmount("");
