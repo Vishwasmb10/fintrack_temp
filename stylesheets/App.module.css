@@ -38,3 +38,23 @@
     grid-template-columns: repeat(auto-fit,minmax(0px,350px));
     padding: 35px;
 }
+
+.netAmount{
+    position: fixed;
+    color:green;
+    font-weight: bold;
+    font-size: 40px;
+    top:10px;
+    right:10px;
+    font-family: "poppins";
+}
+
+.netAmountLoss{
+    position: fixed;
+    font-weight: bold;
+    font-size: 40px;
+    top:10px;
+    right:10px;
+    font-family: "poppins";
+    color:red;
+}

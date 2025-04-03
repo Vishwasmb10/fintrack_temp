@@ -8,18 +8,23 @@ export default function Form(props){
     const [quantity,setQuantity]=useState();
     const [amount,setAmount]=useState();
 
+    const dateObj=new Date();
+    const date=(`${dateObj.getFullYear()}-${dateObj.getMonth()+1}-${dateObj.getDate()}`);
+
+
     async function saveHandle(){
         if(product=="" || quantity=="" || amount=="" )
             return;
         
-        const { error } = await supabase.from('debit').insert([{ product, quantity,amount }]);
+        const { error } = await supabase.from('debit').insert([{ date, product, quantity,amount }]);
         if (error) console.error('Error adding user:', error);
-        else alert('Product added successfully!');
-        props.setCards((cards)=>{return[...cards,<Card key="product" product={product} quantity={quantity} amount={amount} />]});
+        else {//alert('Product added successfully!');
+        props.setCards((cards)=>{return[...cards,<Card key="product" product={product} quantity={quantity} amount={amount} />]});}
         
         setProduct("");
         setQuantity("");
         setAmount("");
+        props.setIsClicked(false);
 
     }
 

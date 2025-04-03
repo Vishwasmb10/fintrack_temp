@@ -1,0 +1,21 @@
+.loader{
+    width:50px;
+    height: 50px;
+    border-radius:50%;
+    border: 5px solid grey;
+    border-top: 5px solid green;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: loader;
+    animation-timing-function:linear;
+}
+
+@keyframes loader{
+    from{
+        transform: rotate(0);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
