@@ -15,11 +15,11 @@ export default function Form(props){
     async function saveHandle(){
         if(product=="" || quantity=="" || amount=="" )
             return;
-        
-        const { error } = await supabase.from('debit').insert([{ date, product, quantity,amount }]);
+        const id=props.cards.length+1;
+        const { error } = await supabase.from('debit').insert([{ id,date, product, quantity,amount }]);
         if (error) console.error('Error adding user:', error);
         else {//alert('Product added successfully!');
-        props.setCards((cards)=>{return[...cards,<Card key="product" product={product} quantity={quantity} amount={amount} />]});}
+        props.setCards((cards)=>{return[...cards,<Card key={id} product={product} quantity={quantity} amount={amount} idAttribute={cards.length+1}/>]});}
         
         setProduct("");
         setQuantity("");

@@ -26,6 +26,8 @@ form input{
     justify-content: center;
     align-items: center;
     height: 100%;
+    font-family: "poppins";
+    font-weight: bold;
 }
 
 .saveBtn{
@@ -34,4 +36,8 @@ form input{
     border-radius: 20px;
     width:70px;
     padding: 8px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
 }

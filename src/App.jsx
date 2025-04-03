@@ -36,7 +36,6 @@ function App() {
         console.log("Error fetching the details: ",error);
       }
       else{
-        console.log("here:"+ netAmount);
         setNet(netAmount);
       }
     }
@@ -44,7 +43,7 @@ function App() {
   },[]);
 
   useEffect(()=>{
-    setCards((prev)=>{return data.map((ele)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} />});});
+    setCards((prev)=>{return data.map((ele,index)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={index+1}/>});});
   },[data]);
 
 
@@ -55,7 +54,6 @@ function App() {
           console.log("Error fetching the details: ",error);
         }
         else{
-          console.log("here:"+ netAmount);
           setNet(netAmount);
         }
       }

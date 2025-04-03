@@ -4,4 +4,41 @@
     padding: 25px;
     border-radius: 8px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.info{
+    background-color: rgb(189, 194, 58);
+    margin-bottom: 10px;
+    padding: 8px;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.info>p:first-child{
+    font-weight: bold;
+    font-family: "poppins";
+    color: black;
+}
+
+.info>p:first-child + p{
+    color:white;
+    font-size: 17px;
+}
+
+.deleteBtn{
+    display: block;
+    background-color: rgb(103, 0, 0);
+    color: white;
+    font-family: "poppins";
+    border: none;
+    padding: 7px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.deleteBtn:hover{
+    cursor: pointer;
 }
