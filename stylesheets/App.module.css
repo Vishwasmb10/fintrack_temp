@@ -21,7 +21,7 @@
 }
 
 .form{
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.638);
     backdrop-filter: blur(2px);
     top:0;
@@ -43,7 +43,7 @@
     position: fixed;
     color:green;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     top:10px;
     right:10px;
     font-family: "poppins";
@@ -52,7 +52,7 @@
 .netAmountLoss{
     position: fixed;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     top:10px;
     right:10px;
     font-family: "poppins";

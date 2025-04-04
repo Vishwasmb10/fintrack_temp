@@ -11,15 +11,32 @@ export default function Form(props){
     const dateObj=new Date();
     const date=(`${dateObj.getFullYear()}-${dateObj.getMonth()+1}-${dateObj.getDate()}`);
 
+    async function fetchIdValue(){
+        let { data:id, error:idError } = await supabase.from('debit').select('id').order('id', { ascending: false }).limit(1);
+
+        if (idError) {
+            console.log("Error fetching max ID:", error);
+        } else {
+            console.log("Max ID:", id.length > 0 ? id[0].id : null);
+        }
+
+        const idValue=id[0].id+1;
+        return idValue;
+    }
 
     async function saveHandle(){
-        if(product=="" || quantity=="" || amount=="" )
+        if( product=="" || quantity=="" || amount=="" )
             return;
-        const id=props.cards.length+1;
-        const { error } = await supabase.from('debit').insert([{ id,date, product, quantity,amount }]);
+        
+        const idValue=fetchIdValue();
+
+        const { error } = await supabase.from('debit').insert([{ id:idValue,date, product, quantity,amount }]);
+        
         if (error) console.error('Error adding user:', error);
-        else {//alert('Product added successfully!');
-        props.setCards((cards)=>{return[...cards,<Card key={id} product={product} quantity={quantity} amount={amount} idAttribute={cards.length+1}/>]});}
+        else {
+            //alert('Product added successfully!');
+            props.setCards((cards)=>{return[...cards,<Card key={id} product={product} quantity={quantity} amount={amount} idAttribute={idValue}/>]});
+        }
         
         setProduct("");
         setQuantity("");

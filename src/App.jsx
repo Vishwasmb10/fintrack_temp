@@ -12,15 +12,25 @@ function App() {
   const [data,setData]=useState([]);
   const [net,setNet]=useState([]);
   const date=new Date();
+  const today=(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
 
   function formDisplay(){
     setIsClicked((isClicked)=>!isClicked);
-    console.log(net);
+    // console.log(net);
   }
+
+  async function updateNet(){ 
+    const {data:netAmount,error:netError}=await supabase.from('net').select('net').eq('date',today);
+      if(netError){
+        console.log("Error fetching the details: ",error);
+      }
+      else{
+        setNet(netAmount);
+      }
+    }
 
   useEffect(()=>{
     async function fetchDetails(){
-      const today=(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
       console.log(today);
       const {data,error}=await supabase.from('debit').select('*').eq('date',today);
       if(error){
@@ -31,32 +41,17 @@ function App() {
         console.log("here:");
       }
 
-      const {data:netAmount,error:netError}=await supabase.from('net').select('net');//.eq('date',today);
-      if(netError){
-        console.log("Error fetching the details: ",error);
-      }
-      else{
-        setNet(netAmount);
-      }
+      updateNet();
     }
     fetchDetails();
   },[]);
 
   useEffect(()=>{
-    setCards((prev)=>{return data.map((ele,index)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={index+1}/>});});
+    setCards((prev)=>{return data.map((ele,index)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={ele.id}/>});});
   },[data]);
 
 
   useEffect(()=>{
-    async function updateNet(){ 
-      const {data:netAmount,error:netError}=await supabase.from('net').select('net');//.eq('date',today);
-        if(netError){
-          console.log("Error fetching the details: ",error);
-        }
-        else{
-          setNet(netAmount);
-        }
-      }
       updateNet();
   },[cards]);
 
