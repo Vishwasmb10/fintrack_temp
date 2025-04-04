@@ -5,7 +5,7 @@ import { supabase } from '../src/supabaseClient';
 
 export default function Form(props){
     const [product,setProduct]=useState("");
-    const [quantity,setQuantity]=useState();
+    const [quantity,setQuantity]=useState("");
     const [amount,setAmount]=useState();
 
     const dateObj=new Date();
@@ -28,14 +28,14 @@ export default function Form(props){
         if( product=="" || quantity=="" || amount=="" )
             return;
         
-        const idValue=fetchIdValue();
+        const idValue=await fetchIdValue();
 
         const { error } = await supabase.from('debit').insert([{ id:idValue,date, product, quantity,amount }]);
         
         if (error) console.error('Error adding user:', error);
         else {
             //alert('Product added successfully!');
-            props.setCards((cards)=>{return[...cards,<Card key={id} product={product} quantity={quantity} amount={amount} idAttribute={idValue}/>]});
+            props.setCards((cards)=>{return[...cards,<Card key={idValue} product={product} quantity={quantity} amount={amount} idAttribute={idValue} setData={props.setData} setNet={props.setNet}/>]});
         }
         
         setProduct("");

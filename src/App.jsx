@@ -47,7 +47,7 @@ function App() {
   },[]);
 
   useEffect(()=>{
-    setCards((prev)=>{return data.map((ele,index)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={ele.id}/>});});
+    setCards((prev)=>{return data.map((ele,index)=>{return <Card key={ele.product} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={ele.id} setData={setData} setNet={setNet}/>});});
   },[data]);
 
 
@@ -59,7 +59,7 @@ function App() {
     <div className={style.app}>
       {net.length>0?<p className={net[0].net>0?style.netAmount:style.netAmountLoss}>{net[0].net}</p>:<div className={style.netAmount}><Loader/></div>}
       <button type='button' className={style.addBtn} onClick={formDisplay}>+</button>
-      {!isClicked?"":<div className={style.form}><Form cards={cards} setCards={setCards} setIsClicked={setIsClicked}/></div>}
+      {!isClicked?"":<div className={style.form}><Form cards={cards} setCards={setCards} setIsClicked={setIsClicked} setData={setData} setNet={setNet}/></div>}
       <div className={style.cards}>{cards}</div>
     </div>
   )
