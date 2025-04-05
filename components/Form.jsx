@@ -7,19 +7,22 @@ export default function Form(props){
     const [product,setProduct]=useState("");
     const [quantity,setQuantity]=useState("");
     const [amount,setAmount]=useState();
+    const [selected, setSelected]=useState('credit');
 
     const dateObj=new Date();
     const date=(`${dateObj.getFullYear()}-${dateObj.getMonth()+1}-${dateObj.getDate()}`);
 
     async function fetchIdValue(){
-        let { data:id, error:idError } = await supabase.from('debit').select('id').order('id', { ascending: false }).limit(1);
+        let { data:id, error:idError } = await supabase.from(selected).select('id').order('id', { ascending: false }).limit(1);
 
         if (idError) {
-            console.log("Error fetching max ID:", error);
+            console.log("Error fetching max ID:", idError);
         } else {
             console.log("Max ID:", id.length > 0 ? id[0].id : null);
         }
-
+        if(id.length===0){
+            return 1;
+        }
         const idValue=id[0].id+1;
         return idValue;
     }
@@ -30,12 +33,12 @@ export default function Form(props){
         
         const idValue=await fetchIdValue();
 
-        const { error } = await supabase.from('debit').insert([{ id:idValue,date, product, quantity,amount }]);
+        const { error } = await supabase.from(selected).insert([{ id:idValue,date, product, quantity,amount }]);
         
         if (error) console.error('Error adding user:', error);
         else {
             //alert('Product added successfully!');
-            props.setCards((cards)=>{return[...cards,<Card key={idValue} product={product} quantity={quantity} amount={amount} idAttribute={idValue} setData={props.setData} setNet={props.setNet}/>]});
+            props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setData={props.setData} setNet={props.setNet}/>]});
         }
         
         setProduct("");
@@ -57,9 +60,18 @@ export default function Form(props){
         setAmount(e.target.value);
     }
 
+    function handleToggle(value){
+        setSelected(value)
+    }
+
 
     return (<div className={style.form}>
         <form autoComplete='off'>
+            <div className={style.toggleBtnContainer}>
+                <button type="button" className={`${style.toggleBtn} ${selected=='credit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('credit')}}>Credit</button>
+                <button type="button" className={`${style.toggleBtn} ${selected=='debit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('debit')}}>Debit</button>
+            </div>
+
             <label htmlFor="product">Product</label>
             <input type="text" name="product" id="product" value={product} onChange={handleProduct}/>
 
