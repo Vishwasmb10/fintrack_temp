@@ -17,28 +17,52 @@ export default function Card(props){
           }
         }
 
+        async function fetchCreditValues(){
+          const {data:creditData,error:creditError}=await supabase.from('credit').select('*').eq('date',today);
+          if(creditError){
+            console.log("Error fetching the details: ",creditError);
+          }
+          else{
+            props.setCreditData(creditData);
+            // console.log(creditData);
+            // console.log("here:" + new Date().getMinutes());
+            // console.log(new Date(creditData[0].time).getDate());
+          }
+        }
+      
+          
+        async function fetchDebitValues(){
+          const {data:debitData,error:debitError}=await supabase.from('debit').select('*').eq('date',today);
+          if(debitError){
+            console.log("Error fetching the details: ",debitError);
+          }
+          else{
+            props.setDebitData(debitData);
+            // console.log(debitData);
+            // console.log("here:");
+          }
+        }
+      
     async function deleteCard(){
         console.log(props.idAttribute);
-        const { error } = await supabase.from('debit').delete().eq('id', props.idAttribute);
+        console.log(props.transactionType);
+        console.log(props.idAttribute);
+        const { error } = await supabase.from(props.transactionType).delete().eq('id', props.idAttribute);
     
         if (error) {
             console.log("Error deleting the row:", error);
         } else {
             console.log("Row deleted successfully!");
+            alert('Deleted Successfully');
             async function fetchDetails(){
-                console.log(today);
-                const {data,error}=await supabase.from('debit').select('*').eq('date',today);
-                if(error){
-                  console.log("Error fetching the details: ",error);
-                }
-                else{
-                  props.setData(data);
-                  console.log("here:");
-                }
-          
-                updateNet();
-              }
-              fetchDetails();
+              console.log(today);
+        
+              fetchCreditValues();
+              fetchDebitValues();
+              updateNet();
+        
+            }
+            fetchDetails();
         }
     }
 

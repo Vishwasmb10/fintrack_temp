@@ -38,7 +38,7 @@ export default function Form(props){
         if (error) console.error('Error adding user:', error);
         else {
             //alert('Product added successfully!');
-            props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setData={props.setData} setNet={props.setNet}/>]});
+            props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet}/>]}); //setData={props.setData} setNet={props.setNet}
         }
         
         setProduct("");
@@ -67,10 +67,7 @@ export default function Form(props){
 
     return (<div className={style.form}>
         <form autoComplete='off'>
-            <div className={style.toggleBtnContainer}>
-                <button type="button" className={`${style.toggleBtn} ${selected=='credit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('credit')}}>Credit</button>
-                <button type="button" className={`${style.toggleBtn} ${selected=='debit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('debit')}}>Debit</button>
-            </div>
+
 
             <label htmlFor="product">Product</label>
             <input type="text" name="product" id="product" value={product} onChange={handleProduct}/>
@@ -81,6 +78,10 @@ export default function Form(props){
             <label htmlFor="amt">Amount</label>
             <input type="text" name="amt" id="amt" value={amount} onChange={handleAmount}/>
             
+            <div className={style.toggleBtnContainer}>
+                <button type="button" className={`${style.toggleBtn} ${selected=='credit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('credit')}}>Credit</button>
+                <button type="button" className={`${style.toggleBtn} ${selected=='debit'?style.activeBtn:''}`}  onClick={()=>{handleToggle('debit')}}>Debit</button>
+            </div>
             <button type="button" onClick={()=>{saveHandle();}} className={style.saveBtn}>Save</button>
         </form>
     </div>);
