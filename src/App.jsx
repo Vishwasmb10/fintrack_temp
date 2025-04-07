@@ -55,7 +55,7 @@ function App() {
     }
     else{
       setDebitData(debitData);
-      // console.log(debitData);
+      console.log(debitData);
       // console.log("here:");
     }
   }
