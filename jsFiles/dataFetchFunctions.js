@@ -1,11 +1,11 @@
 import { supabase } from "../src/supabaseClient";
-const date=new Date();
-const today=(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
+const day=new Date();
+const today=(`${day.getFullYear()}-${day.getMonth()+1}-${day.getDate()}`);
 
-async function updateNet(setNet){ 
-    const {data:netAmount,error:netError}=await supabase.from('net').select('net').eq('date',today);
+async function updateNet(setNet,date){ 
+    const {data:netAmount,error:netError}=await supabase.from('net').select('net').eq('date',date);
       if(netError){
-        console.log("Error fetching the details: ",error);
+        console.log("Error fetching the details: ",netError);
       }
       else{
         setNet(netAmount);
@@ -13,8 +13,8 @@ async function updateNet(setNet){
 }
 
 
-async function fetchCreditValues(setCreditData){
-    const {data:creditData,error:creditError}=await supabase.from('credit').select('*').eq('date',today);
+async function fetchCreditValues(setCreditData,date){
+    const {data:creditData,error:creditError}=await supabase.from('credit').select('*').eq('date',date);
     if(creditError){
       console.log("Error fetching the details: ",creditError);
     }
@@ -23,8 +23,8 @@ async function fetchCreditValues(setCreditData){
     }
 }
 
-async function fetchDebitValues(setDebitData){
-    const {data:debitData,error:debitError}=await supabase.from('debit').select('*').eq('date',today);
+async function fetchDebitValues(setDebitData,date){
+    const {data:debitData,error:debitError}=await supabase.from('debit').select('*').eq('date',date);
     if(debitError){
       console.log("Error fetching the details: ",debitError);
     }
@@ -33,15 +33,15 @@ async function fetchDebitValues(setDebitData){
     }
 }
 
-async function fetchDetails(setCreditData,setDebitData,setNet){
+async function fetchDetails(setCreditData,setDebitData,setNet,date){
     console.log(today);
 
-    fetchCreditValues(setCreditData);
-    fetchDebitValues(setDebitData);
-    updateNet(setNet);
+    fetchCreditValues(setCreditData,date);
+    fetchDebitValues(setDebitData,date);
+    updateNet(setNet,date);
 
 }
 
 
 
-export {fetchDetails,updateNet};
+export {fetchDetails,updateNet,today};

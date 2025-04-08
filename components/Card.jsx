@@ -17,7 +17,7 @@ export default function Card(props){
         } else {
             console.log("Row deleted successfully!");
             alert('Deleted Successfully');
-            fetchDetails(props.setCreditData,props.setDebitData,props.setNet);
+            fetchDetails(props.setCreditData,props.setDebitData,props.setNet,props.date);
         }
     }
 
