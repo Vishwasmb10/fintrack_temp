@@ -5,6 +5,7 @@ import {supabase} from './supabaseClient';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import sortTransactions from '../jsFiles/sortTransactions';
+import { fetchDetails,updateNet } from '../jsFiles/dataFetchFunctions';
 
 function App() {
 
@@ -15,63 +16,13 @@ function App() {
   const [net,setNet]=useState([]);
   const [transactions,setTransactions]=useState([]);
 
-  const date=new Date();
-  const today=(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`);
-  
-
   function formDisplay(){
     setIsClicked((isClicked)=>!isClicked);
     // console.log(net);
   }
-
-  async function updateNet(){ 
-    const {data:netAmount,error:netError}=await supabase.from('net').select('net').eq('date',today);
-      if(netError){
-        console.log("Error fetching the details: ",error);
-      }
-      else{
-        setNet(netAmount);
-      }
-    }
-
-  async function fetchCreditValues(){
-    const {data:creditData,error:creditError}=await supabase.from('credit').select('*').eq('date',today);
-    if(creditError){
-      console.log("Error fetching the details: ",creditError);
-    }
-    else{
-      setCreditData(creditData);
-      // console.log(creditData);
-      // console.log("here:" + new Date().getMinutes());
-      // console.log(new Date(creditData[0].time).getDate());
-    }
-  }
-
     
-  async function fetchDebitValues(){
-    const {data:debitData,error:debitError}=await supabase.from('debit').select('*').eq('date',today);
-    if(debitError){
-      console.log("Error fetching the details: ",debitError);
-    }
-    else{
-      setDebitData(debitData);
-      console.log(debitData);
-      // console.log("here:");
-    }
-  }
-
-
-
   useEffect(()=>{
-    async function fetchDetails(){
-      console.log(today);
-
-      fetchCreditValues();
-      fetchDebitValues();
-      updateNet();
-
-    }
-    fetchDetails();
+    fetchDetails(setCreditData,setDebitData,setNet);
   },[]);
 
   useEffect(()=>{
@@ -87,7 +38,7 @@ function App() {
 
 
   useEffect(()=>{
-      updateNet();
+      updateNet(setNet);
   },[cards]);
 
   return (
