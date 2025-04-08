@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import sortTransactions from '../jsFiles/sortTransactions';
 import { fetchDetails,updateNet,today } from '../jsFiles/dataFetchFunctions';
 import Calendar from '../components/Calendar';
+import calendarIcon from './assets/calendar.png'
 
 function App() {
 
@@ -57,7 +58,7 @@ function App() {
     <div className={style.app}>
       {net.length>0?<p className={net[0].net>0?style.netAmount:style.netAmountLoss}>{net[0].net}</p>:<div className={style.netAmount}><Loader/></div>}
       {date===today?<button type='button' className={style.addBtn} onClick={formDisplay}>+</button>:""}
-      <div className={style.calendarIcon}><img src="./src/assets/calendar.png" alt="calendar" onClick={datePick}/></div>
+      <div className={style.calendarIcon}><img src={calendarIcon} alt="calendar" onClick={datePick}/></div>
       {!pickDate?"":<div className={style.calendar}><Calendar setDate={setDate} setPickDate={setPickDate}/></div>}
       {!isClicked?"":<div className={style.form}><Form cards={cards} setCards={setCards} setIsClicked={setIsClicked} setNet={setNet} setCreditData={setCreditData} setDebitData={setDebitData} date={date}/></div>}
       <div className={style.cards}>{cards}</div>
