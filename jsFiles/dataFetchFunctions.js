@@ -42,6 +42,19 @@ async function fetchDetails(setCreditData,setDebitData,setNet,date){
 
 }
 
+async function fetchValuesByMonth(setDataByMonth,month){
+  const {data:creditData,error:creditError}=await supabase.from('net')
+  .select('*')
+  .gte('date', `${new Date().getFullYear()}-${Number(month)}-01`)
+  .lt('date', `${new Date().getFullYear()}-${Number(month)+1}-01`);
+
+  if(creditError){
+    console.log("Error fetching the details: ",creditError);
+  }
+  else{
+    setDataByMonth(creditData);
+  }
+}
 
 
-export {fetchDetails,updateNet,today};
+export {fetchDetails,updateNet,today,fetchValuesByMonth};

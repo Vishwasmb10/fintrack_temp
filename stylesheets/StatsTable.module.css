@@ -1,0 +1,46 @@
+.statsTable{
+    font-family: "poppins";
+    font-size: 20px;
+    padding: 20px;
+    /* box-shadow: 0 0 10px 10px grey; */
+    border-collapse: collapse;
+    width: 800px;
+    height: 100%;
+    max-height: 90vh;
+}
+
+th{
+    background-color: rgba(128, 128, 128, 0.283);
+    border: none;
+    padding: 10px;
+    color: rgb(52, 52, 52);
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+    border-bottom:1px solid black;
+    /* height: 20px; */
+}
+
+thead tr:first-child{
+    background-color: rgba(128, 128, 128, 0.283);
+}
+
+.total{
+    background-color: black;
+    color: white;
+}
+
+.total>td{
+    font-weight: bold;
+}
+
+
+@media (max-width:750px){
+    .statsTable{
+        max-width:350px;
+        font-size: 15px;
+    }
+}
+

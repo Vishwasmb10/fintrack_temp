@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import style from '../stylesheets/App.module.css';
 import Form from '../components/Form';
-import {supabase} from './supabaseClient';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import sortTransactions from '../jsFiles/sortTransactions';

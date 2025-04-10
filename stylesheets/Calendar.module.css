@@ -33,7 +33,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-li:hover{
+.calendarContainer ul li:hover{
     background-color: rgb(103, 0, 0);
     color: white;
     border-radius: 12px;

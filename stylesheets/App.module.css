@@ -16,7 +16,7 @@
     font-size: 25px;
     color: purple;
     bottom: 30px;
-    right: 30px;
+    right: 10px;
     z-index: 101;
 }
 
@@ -85,9 +85,9 @@
 
 .statsIcon img{
     position: fixed;
-    height: 60px;
+    height: 50px;
     top:125px;
-    right: 5px;
+    right: 10px;
     border-radius: 100%;
     transition: box-shadow 0.5s ease-in-out;
 }
