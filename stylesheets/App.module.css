@@ -68,7 +68,7 @@
     height: 50px;
     position: fixed;
     right: 10px;
-    top:55px;
+    top:65px;
     z-index: 1000;
 }
 
@@ -81,4 +81,18 @@
     height:100%;
     width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.statsIcon img{
+    position: fixed;
+    height: 60px;
+    top:125px;
+    right: 5px;
+    border-radius: 100%;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.statsIcon img:hover{
+    box-shadow: 0 0 10px 2px black;
+    cursor: pointer;
 }
