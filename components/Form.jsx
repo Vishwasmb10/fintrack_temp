@@ -43,15 +43,13 @@ export default function Form(props){
          
         }
         else{
-            for(let i=0;i<multipleAmounts.length;i++){
-                const idValue=await fetchIdValue();
-                const {error}=await supabase.from(selected).insert([{ id:idValue,date, product:"multiple", quantity:1,amount:multipleAmounts[i] }]);
-                if (error) console.error('Error adding user:', error);
-                else {
-                    //alert('Product added successfully!');
-                    props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product="multiple" quantity={1} amount={multipleAmounts[i]} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
-                }
-                
+            const sum=multipleAmounts.reduce((sum,ele)=>sum+Number(ele),0);
+            console.log("sum:"+sum);
+            const { error } = await supabase.from(selected).insert([{ id:idValue,date, product:"Multiple", quantity:1,amount:sum }]);
+            if (error) console.error('Error adding user:', error);
+            else {
+                //alert('Product added successfully!');
+                props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={"Multiple"} quantity={1} amount={sum} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
             }
 
         }
