@@ -28,18 +28,38 @@ export default function Form(props){
     }
 
     async function saveHandle(){
-        if( product=="" || quantity=="" || amount=="" )
+        if( amount=="" )
             return;
-        
+        const multipleAmounts=amount.split("+");
         const idValue=await fetchIdValue();
 
-        const { error } = await supabase.from(selected).insert([{ id:idValue,date, product, quantity,amount }]);
-        
-        if (error) console.error('Error adding user:', error);
-        else {
-            //alert('Product added successfully!');
-            props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
+        if(multipleAmounts.length==1){
+         const { error } = await supabase.from(selected).insert([{ id:idValue,date, product, quantity,amount }]);
+         if (error) console.error('Error adding user:', error);
+         else {
+             //alert('Product added successfully!');
+             props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
+         }
+         
         }
+        else{
+            for(let i=0;i<multipleAmounts.length;i++){
+                const idValue=await fetchIdValue();
+                const {error}=await supabase.from(selected).insert([{ id:idValue,date, product:"multiple", quantity:1,amount:multipleAmounts[i] }]);
+                if (error) console.error('Error adding user:', error);
+                else {
+                    //alert('Product added successfully!');
+                    props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product="multiple" quantity={1} amount={multipleAmounts[i]} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
+                }
+                
+            }
+
+        }
+        // if (error) console.error('Error adding user:', error);
+        // else {
+        //     //alert('Product added successfully!');
+        //     props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
+        // }
         
         setProduct("");
         setQuantity("");

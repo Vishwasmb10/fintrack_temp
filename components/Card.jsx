@@ -20,9 +20,9 @@ export default function Card(props){
             fetchDetails(props.setCreditData,props.setDebitData,props.setNet,props.date);
         }
     }
+    const type=`${props.transactionType}`;
 
-
-    return (<div className={style.card}>
+    return (<div className={`${style.card} ${type=='credit'?style.credit:style.debit}`}>
 
         <div className={style.info}>
             <p>Product</p>

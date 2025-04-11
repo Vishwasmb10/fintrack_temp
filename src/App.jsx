@@ -26,7 +26,6 @@ function App() {
 
   function formDisplay(){
     setIsClicked((isClicked)=>!isClicked);
-    console.log(count);
   }
 
   function datePick(){
