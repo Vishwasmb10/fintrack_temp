@@ -53,9 +53,9 @@ function App() {
 
 
 
-  useEffect(()=>{
-      updateNet(setNet,date);
-  },[cards]);
+  // useEffect(()=>{
+  //     updateNet(setNet,date);
+  // },[cards]);
 
   return (
     <>

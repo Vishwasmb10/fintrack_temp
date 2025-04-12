@@ -8,6 +8,8 @@ async function updateNet(setNet,date){
         console.log("Error fetching the details: ",netError);
       }
       else{
+        date=='2025-4-11'?console.trace("UpdateNet Called"):"";
+      console.log("Inside UpdateNet: \nDate:" +date +"net: "+netAmount);
         setNet(netAmount);
       }
 }

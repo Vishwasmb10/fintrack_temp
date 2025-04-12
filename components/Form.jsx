@@ -2,6 +2,7 @@ import { useState } from 'react';
 import style from '../stylesheets/Form.module.css';
 import Card from './Card';
 import { supabase } from '../src/supabaseClient';
+import { updateNet } from '../jsFiles/dataFetchFunctions';
 
 export default function Form(props){
     const [product,setProduct]=useState("");
@@ -39,7 +40,8 @@ export default function Form(props){
          else {
              //alert('Product added successfully!');
              props.setCards((cards)=>{return[...cards,<Card key={`${selected} ${idValue}`} product={product} quantity={quantity} amount={amount} idAttribute={idValue} transactionType={selected} setCreditData={props.setCreditData} setDebitData={props.setDebitData} setNet={props.setNet} date={props.date}/>]}); //setData={props.setData} setNet={props.setNet}
-         }
+             updateNet(props.setNet,date);
+        }
          
         }
         else{
