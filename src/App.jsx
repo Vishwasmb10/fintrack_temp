@@ -28,6 +28,7 @@ function App() {
 
   function formDisplay() {
     setIsClicked((isClicked) => !isClicked);
+    console.log(date);
   }
 
   function datePick() {
@@ -84,11 +85,9 @@ function App() {
           </div>
           
           <div className={style.actionButtons}>
-            {date === today && (
               <button type='button' className={style.addBtn} onClick={formDisplay}>
                 +
               </button>
-            )}
             <button className={style.iconBtn} onClick={datePick}>
               <img src={calendarIcon} alt="calendar" />
             </button>
