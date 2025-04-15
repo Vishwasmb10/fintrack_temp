@@ -1,18 +1,65 @@
-*{
+/* index.css */
+:root {
+    /* Light theme (default) */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #4f46e5;
+    --border-color: #e2e8f0;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --credit-color: #10b981;
+    --debit-color: #ef4444;
+    --btn-primary: #4f46e5;
+    --btn-danger: #dc2626;
+    --btn-edit: #2563eb;
+    --hover-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  [data-theme='dark'] {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --accent-color: #6366f1;
+    --border-color: #4a5568;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --credit-color: #34d399;
+    --debit-color: #f87171;
+    --btn-primary: #6366f1;
+    --btn-danger: #ef4444;
+    --btn-edit: #3b82f6;
+    --hover-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html,body{
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  html, body {
     height: 100%;
-}
-
-
-#root{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  #root {
     height: 100%;
     width: 100%;
-}
- #root>div{
+  }
+  
+  #root > div {
     height: 100%;
- }
+  }
+  
+  button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  input, select, textarea {
+    font-family: 'Poppins', sans-serif;
+  }

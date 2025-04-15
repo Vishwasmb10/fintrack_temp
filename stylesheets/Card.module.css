@@ -1,92 +1,105 @@
-.card{
-    box-shadow: 0px 0px 10px 5px grey;
-    width: 250px;
-    padding: 25px;
-    border-radius: 8px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/* stylesheets/Card.module.css */
+.card {
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: 250px;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-}
-
-.info{
-    background-color: rgb(189, 194, 58);
-    margin-bottom: 10px;
-    padding: 8px;
-    color: white;
+    background-color: var(--bg-secondary);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .info {
+    margin-bottom: 8px;
+    padding: 8px 10px;
     border-radius: 8px;
     text-align: center;
-}
-
-.info>p:first-child{
-    font-weight: bold;
-    font-family: "poppins";
-    color: black;
-}
-
-.info>p:first-child + p{
-    color:white;
-    font-size: 17px;
-}
-
-.deleteBtn{
-    /* display: block; */
-    background-color: rgb(103, 0, 0);
-    color: white;
-    font-family: "poppins";
-    border: none;
-    padding: 7px;
-    border-radius: 8px;
-    font-weight: bold;
-    flex: 1;
-}
-
-.deleteBtn:hover{
-    cursor: pointer;
-}
-
-.debit{
-    box-shadow: 0px 0px 10px 5px rgb(103, 0, 0);
-}
-.credit{
-    box-shadow: 0px 0px 10px 5px rgb(0, 103, 0);
-
-}
-
-.buttonContainer{
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+  }
+  
+  .info > p:first-child {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  
+  .info > p:first-child + p {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .buttonContainer {
     display: flex;
-    justify-content:center;
-    gap: 10px;
-}
-
-.editBtn{
-    /* display: block; */
-    background-color: rgb(0, 0, 103);
-    color: white;
-    font-family: "poppins";
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  
+  .deleteBtn, .editBtn, .submitBtn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
     border: none;
-    padding: 7px;
-    border-radius: 8px;
-    font-weight: bold;
     flex: 1;
-}
-
-.editButton:hover{
-    cursor: pointer;
-}
-
-.submitBtn{
-    background-color: rgb(0, 103,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+  }
+  
+  .deleteBtn:hover, .editBtn:hover, .submitBtn:hover {
+    opacity: 0.9;
+  }
+  
+  .deleteBtn {
+    background-color: var(--btn-danger);
     color: white;
-    font-family: "poppins";
-    border: none;
-    padding: 7px;
-    border-radius: 8px;
-    font-weight: bold;
-    flex: 1;
-}
-
-.inputField{
-    width:100%;
+  }
+  
+  .editBtn {
+    background-color: var(--btn-edit);
+    color: white;
+  }
+  
+  .submitBtn {
+    background-color: var(--btn-primary);
+    color: white;
+  }
+  
+  .debit {
+    border-left: 4px solid var(--debit-color);
+  }
+  
+  .credit {
+    border-left: 4px solid var(--credit-color);
+  }
+  
+  .inputField {
+    width: 100%;
     padding: 8px;
-    border-radius: 8px;
-}
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }

@@ -1,51 +1,56 @@
-.statsTable{
-    font-family: "poppins";
-    font-size: 20px;
-    padding: 20px;
-    /* box-shadow: 0 0 10px 10px grey; */
+/* stylesheets/StatsTable.module.css */
+.statsTable {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    padding: 15px;
     border-collapse: collapse;
-    width: 800px;
-    height: 100%;
-    max-height: 90vh;
-}
-
-th{
-    background-color: rgba(128, 128, 128, 0.283);
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    background-color: var(--bg-secondary);
+  }
+  
+  .statsTable th {
+    background-color: var(--accent-color);
+    color: white;
     border: none;
-    padding: 10px;
-    color: rgb(52, 52, 52);
-}
-
-td{
+    padding: 12px;
     text-align: center;
-    padding: 10px;
-    border-bottom:1px solid black;
-    /* height: 20px; */
-}
-
-thead tr:first-child{
-    background-color: rgba(128, 128, 128, 0.283);
-}
-
-.total{
-    background-color: black;
-    color: white;
-}
-
-.total>td{
-    font-weight: bold;
-}
-
-.today{
-    background-color: rgba(0, 0, 103, 0.932);
-    color: white;
-}
-
-
-@media (max-width:750px){
-    .statsTable{
-        max-width:350px;
-        font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .statsTable td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  
+  .total {
+    background-color: var(--bg-primary);
+    font-weight: 600;
+  }
+  
+  .total > td {
+    color: var(--text-primary);
+  }
+  
+  .today {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+  
+  .today td {
+    font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    .statsTable {
+      font-size: 0.8rem;
     }
-}
-
+    
+    .statsTable th, .statsTable td {
+      padding: 10px 6px;
+    }
+  }

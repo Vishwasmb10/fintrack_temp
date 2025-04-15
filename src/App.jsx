@@ -1,75 +1,134 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react';
 import style from '../stylesheets/App.module.css';
 import Form from '../components/Form';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import sortTransactions from '../jsFiles/sortTransactions';
-import { fetchDetails,updateNet,today } from '../jsFiles/dataFetchFunctions';
+import { fetchDetails, updateNet, today } from '../jsFiles/dataFetchFunctions';
 import Calendar from '../components/Calendar';
-import calendarIcon from './assets/calendar.png'
+import ThemeToggle from '../components/ThemeToggle';
+import calendarIcon from './assets/calendar.png';
 import { useParams } from 'react-router-dom';
 import Stats from '../components/Stats';
-import statsIcon from './assets/statsIcon.png'
+import statsIcon from './assets/statsIcon.png';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 
 function App() {
+  const [isClicked, setIsClicked] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [debitData, setDebitData] = useState([]);
+  const [creditData, setCreditData] = useState([]);
+  const [net, setNet] = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const [date, setDate] = useState(today);
+  const [pickDate, setPickDate] = useState(false);
+  const { page } = useParams();
+  const { isDarkMode } = useContext(ThemeContext);
 
-  const [isClicked,setIsClicked]=useState(false);
-  const [cards,setCards]=useState([]);
-  const [debitData,setDebitData]=useState([]);
-  const [creditData,setCreditData]=useState([]);
-  const [net,setNet]=useState([]);
-  const [transactions,setTransactions]=useState([]);
-  const [date,setDate]=useState(today);
-  const [pickDate,setPickDate]=useState(false);
-  const {page}=useParams();
-
-  function formDisplay(){
-    setIsClicked((isClicked)=>!isClicked);
+  function formDisplay() {
+    setIsClicked((isClicked) => !isClicked);
   }
 
-  function datePick(){
-    setPickDate((pickDate)=>!pickDate);
-    
+  function datePick() {
+    setPickDate((pickDate) => !pickDate);
   }
     
-  useEffect(()=>{
-    fetchDetails(setCreditData,setDebitData,setNet,date);
-  },[]);
+  useEffect(() => {
+    fetchDetails(setCreditData, setDebitData, setNet, date);
+  }, []);
 
-  useEffect(()=>{
-    fetchDetails(setCreditData,setDebitData,setNet,date);
-  },[date]);
+  useEffect(() => {
+    fetchDetails(setCreditData, setDebitData, setNet, date);
+  }, [date]);
 
-  useEffect(()=>{
-      setTransactions(sortTransactions(creditData,debitData));
-  },[creditData,debitData]);
+  useEffect(() => {
+    setTransactions(sortTransactions(creditData, debitData));
+  }, [creditData, debitData]);
 
-
-  useEffect(()=>{
-    setCards((prev)=>{return transactions.map((ele,index)=>{return <Card key={`${ele.transactionType} ${ele.id}`} product={ele.product} quantity={ele.quantity} amount={ele.amount} idAttribute={ele.id} transactionType={ele.transactionType} setCreditData={setCreditData} setDebitData={setDebitData} setNet={setNet} date={date}/>});}); //setData={setData} setNet={setNet}
-  },[transactions]);
-
-
-
-
-  // useEffect(()=>{
-  //     updateNet(setNet,date);
-  // },[cards]);
+  useEffect(() => {
+    setCards((prev) => {
+      return transactions.map((ele, index) => {
+        return (
+          <Card 
+            key={`${ele.transactionType} ${ele.id}`} 
+            product={ele.product} 
+            quantity={ele.quantity} 
+            amount={ele.amount} 
+            idAttribute={ele.id} 
+            transactionType={ele.transactionType} 
+            setCreditData={setCreditData} 
+            setDebitData={setDebitData} 
+            setNet={setNet} 
+            date={date}
+          />
+        );
+      });
+    });
+  }, [transactions]);
 
   return (
-    <>
-    {page!=='stats'?<div className={style.app}>
-      {net.length>0?<p className={net[0].net>0?style.netAmount:style.netAmountLoss}>{net[0].net}</p>:<div className={style.netAmount}><Loader/></div>}
-      {date===today?<button type='button' className={style.addBtn} onClick={formDisplay}>+</button>:""}
-      <div className={style.calendarIcon}><img src={calendarIcon} alt="calendar" onClick={datePick}/></div>
-      <Link to="/stats"><div className={style.statsIcon}><img src={statsIcon} alt="statsIcon" /></div></Link>
-      {!pickDate?"":<div className={style.calendar}><Calendar setDate={setDate} setPickDate={setPickDate}/></div>}
-      {!isClicked?"":<div className={style.form}><Form cards={cards} setCards={setCards} setIsClicked={setIsClicked} setNet={setNet} setCreditData={setCreditData} setDebitData={setDebitData} date={date}/></div>}
-      <div className={style.cards}>{cards}</div>
-    </div>:page=='stats'&&<Stats />}
-    </>
-  )
+    <div className={`${style.app} ${isDarkMode ? style.darkMode : ''}`}>
+      {page !== 'stats' ? (
+        <>
+          <ThemeToggle />
+          <div className={style.header}>
+            <h1 className={style.appTitle}>FinTrack</h1>
+            {net.length > 0 ? (
+              <p className={net[0].net > 0 ? style.netAmount : style.netAmountLoss}>
+                Balance: {net[0].net}
+              </p>
+            ) : (
+              <div className={style.netAmount}><Loader /></div>
+            )}
+          </div>
+          
+          <div className={style.actionButtons}>
+            {date === today && (
+              <button type='button' className={style.addBtn} onClick={formDisplay}>
+                +
+              </button>
+            )}
+            <button className={style.iconBtn} onClick={datePick}>
+              <img src={calendarIcon} alt="calendar" />
+            </button>
+            <Link to="/stats">
+              <button className={style.iconBtn}>
+                <img src={statsIcon} alt="statsIcon" />
+              </button>
+            </Link>
+          </div>
+          
+          {pickDate && (
+            <div className={style.calendar}>
+              <Calendar setDate={setDate} setPickDate={setPickDate} />
+            </div>
+          )}
+          
+          {isClicked && (
+            <div className={style.formOverlay}>
+              <Form 
+                cards={cards} 
+                setCards={setCards} 
+                setIsClicked={setIsClicked} 
+                setNet={setNet} 
+                setCreditData={setCreditData} 
+                setDebitData={setDebitData} 
+                date={date}
+              />
+            </div>
+          )}
+          
+          <div className={style.cardsContainer}>
+            <h2 className={style.sectionTitle}>Transactions for {date}</h2>
+            <div className={style.cards}>{cards}</div>
+          </div>
+        </>
+      ) : (
+        <Stats />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

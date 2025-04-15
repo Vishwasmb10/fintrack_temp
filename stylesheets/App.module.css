@@ -1,98 +1,162 @@
-/* .app{
+/* stylesheets/App.module.css */
+.app {
+    min-height: 100%;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+  }
+  
+  .appTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-left: 50px;
+    color: var(--accent-color);
+  }
+  
+  .addBtn {
+    background-color: var(--accent-color);
+    border: none;
+    box-shadow: var(--card-shadow);
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 22px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .addBtn:hover {
+    transform: scale(1.1);
+  }
+  
+  .formOverlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-} */
-
-.addBtn{
-    position:fixed;
-    background-color: white;
-    outline: none;
-    border: none;
-    box-shadow: 1px 1px 10px 1px black;
-    padding: 10px 15px 10px 15px;
-    border-radius: 12px;
-    font-size: 25px;
-    color: purple;
-    bottom: 30px;
-    right: 10px;
-    z-index: 101;
-}
-
-.form{
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.638);
-    backdrop-filter: blur(2px);
-    top:0;
-    z-index: 100;
-    height:100%;
-    width: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* display: none; */
-}
-
-.cards{
+  }
+  
+  .cardsContainer {
+    margin-top: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  
+  .cards {
     display: grid;
-    gap: 30px 0px;
-    grid-template-columns: repeat(auto-fit,minmax(0px,350px));
-    padding: 35px;
-}
-
-.netAmount{
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .netAmount, .netAmountLoss {
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .netAmount {
+    color: var(--credit-color);
+  }
+  
+  .netAmountLoss {
+    color: var(--debit-color);
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 10px;
     position: fixed;
-    color:green;
-    font-weight: bold;
-    font-size: 30px;
-    top:10px;
-    right:10px;
-    font-family: "poppins";
-}
-
-.netAmountLoss{
-    position: fixed;
-    font-weight: bold;
-    font-size: 30px;
-    top:10px;
-    right:10px;
-    font-family: "poppins";
-    color:red;
-}
-
-.calendarIcon{
-    background-color: black;
-}
-
-
-.calendarIcon img{
+    bottom: 25px;
+    right: 25px;
+    z-index: 101;
+  }
+  
+  .iconBtn {
+    background-color: var(--bg-secondary);
+    border: none;
+    box-shadow: var(--card-shadow);
+    border-radius: 50%;
+    width: 50px;
     height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .iconBtn:hover {
+    transform: scale(1.1);
+  }
+  
+  .iconBtn img {
+    width: 25px;
+    height: 25px;
+    filter: var(--icon-filter);
+  }
+  
+  .calendar {
     position: fixed;
-    right: 10px;
-    top:65px;
-    z-index: 1000;
-}
-
-.calendar{
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.638);
-    backdrop-filter: blur(2px);
-    top:0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    top: 0;
+    left: 0;
     z-index: 100;
-    height:100%;
+    height: 100%;
     width: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.statsIcon img{
-    position: fixed;
-    height: 50px;
-    top:125px;
-    right: 10px;
-    border-radius: 100%;
-    transition: box-shadow 0.5s ease-in-out;
-}
-
-.statsIcon img:hover{
-    box-shadow: 0 0 10px 2px black;
-    cursor: pointer;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .appTitle {
+      font-size: 1.5rem;
+      margin-left: 40px;
+    }
+    
+    .netAmount, .netAmountLoss {
+      font-size: 1.1rem;
+    }
+    
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .actionButtons {
+      bottom: 15px;
+      right: 15px;
+    }
+    
+    .addBtn, .iconBtn {
+      width: 45px;
+      height: 45px;
+    }
+  }
