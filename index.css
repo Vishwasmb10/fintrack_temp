@@ -1,29 +1,29 @@
 /* index.css */
 :root {
-    /* Light theme (default) - Vibrant Blue-Purple Metallic */
-    --bg-primary: #f0f0ff;
-    --bg-secondary: #e0e0ff;
-    --text-primary: #1a1a3a;
-    --text-secondary: #4a4a9a;
-    --accent-color: #6e6eff;
-    --border-color: rgba(100, 100, 255, 0.2);
-    --card-shadow: 0 8px 32px rgba(100, 100, 255, 0.2), 
-                   0 2px 8px rgba(100, 100, 255, 0.1),
-                   inset 0 1px 1px rgba(255, 255, 255, 0.8);
-    --credit-color: #2e8b2e;
-    --debit-color: #dc3545;
-    --btn-primary: #4a4a9a;
-    --btn-danger: #dc3545;
-    --btn-edit: #4a4a9a;
-    --hover-color: rgba(100, 100, 255, 0.1);
+    /* Light theme (default) - Elegant Blue-Purple Metallic */
+    --bg-primary: #eef1ff;
+    --bg-secondary: #e2e6ff;
+    --text-primary: #2b2b4d;
+    --text-secondary: #4f4f8c;
+    --accent-color: #7b7bff;
+    --border-color: rgba(123, 123, 255, 0.25);
+    --card-shadow: 0 8px 32px rgba(123, 123, 255, 0.15), 
+                   0 2px 8px rgba(123, 123, 255, 0.1),
+                   inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    --credit-color: #4caf50;
+    --debit-color: #f44336;
+    --btn-primary: #6b6bef;
+    --btn-danger: #f44336;
+    --btn-edit: #6b6bef;
+    --hover-color: rgba(123, 123, 255, 0.12);
     --icon-filter: brightness(0.9) contrast(1.2) hue-rotate(200deg);
-    --accent-color-light: rgba(110, 110, 255, 0.2);
-    --error-bg: rgba(220, 53, 69, 0.1);
-    --error-border: rgba(220, 53, 69, 0.4);
-    --error-text: #dc3545;
-    --success-bg: rgba(46, 139, 46, 0.1);
-    --success-border: rgba(46, 139, 46, 0.4);
-    --success-text: #2e8b2e;
+    --accent-color-light: rgba(123, 123, 255, 0.18);
+    --error-bg: rgba(244, 67, 54, 0.08);
+    --error-border: rgba(244, 67, 54, 0.2);
+    --error-text: #f44336;
+    --success-bg: rgba(76, 175, 80, 0.08);
+    --success-border: rgba(76, 175, 80, 0.2);
+    --success-text: #4caf50;
 }
 
 [data-theme='dark'] {
