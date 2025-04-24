@@ -1,65 +1,87 @@
 /* index.css */
 :root {
-    /* Light theme (default) */
-    --bg-primary: #f5f7fa;
-    --bg-secondary: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --accent-color: #4f46e5;
-    --border-color: #e2e8f0;
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --credit-color: #10b981;
-    --debit-color: #ef4444;
-    --btn-primary: #4f46e5;
-    --btn-danger: #dc2626;
-    --btn-edit: #2563eb;
-    --hover-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  [data-theme='dark'] {
-    --bg-primary: #1a202c;
-    --bg-secondary: #2d3748;
-    --text-primary: #f7fafc;
-    --text-secondary: #e2e8f0;
-    --accent-color: #6366f1;
-    --border-color: #4a5568;
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --credit-color: #34d399;
-    --debit-color: #f87171;
-    --btn-primary: #6366f1;
-    --btn-danger: #ef4444;
-    --btn-edit: #3b82f6;
-    --hover-color: rgba(255, 255, 255, 0.05);
-  }
-  
-  * {
+    /* Light theme (default) - Vibrant Blue-Purple Metallic */
+    --bg-primary: #f0f0ff;
+    --bg-secondary: #e0e0ff;
+    --text-primary: #1a1a3a;
+    --text-secondary: #4a4a9a;
+    --accent-color: #6e6eff;
+    --border-color: rgba(100, 100, 255, 0.2);
+    --card-shadow: 0 8px 32px rgba(100, 100, 255, 0.2), 
+                   0 2px 8px rgba(100, 100, 255, 0.1),
+                   inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    --credit-color: #2e8b2e;
+    --debit-color: #dc3545;
+    --btn-primary: #4a4a9a;
+    --btn-danger: #dc3545;
+    --btn-edit: #4a4a9a;
+    --hover-color: rgba(100, 100, 255, 0.1);
+    --icon-filter: brightness(0.9) contrast(1.2) hue-rotate(200deg);
+    --accent-color-light: rgba(110, 110, 255, 0.2);
+    --error-bg: rgba(220, 53, 69, 0.1);
+    --error-border: rgba(220, 53, 69, 0.4);
+    --error-text: #dc3545;
+    --success-bg: rgba(46, 139, 46, 0.1);
+    --success-border: rgba(46, 139, 46, 0.4);
+    --success-text: #2e8b2e;
+}
+
+[data-theme='dark'] {
+    /* Dark theme - Deep Blue-Purple Metallic */
+    --bg-primary: #050510;
+    --bg-secondary: #151535;
+    --text-primary: #f0f0ff;
+    --text-secondary: #b0b0ff;
+    --accent-color: #8080ff;
+    --border-color: rgba(120, 120, 255, 0.2);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 
+                   0 2px 8px rgba(0, 0, 0, 0.4),
+                   inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    --credit-color: #80ff80;
+    --debit-color: #ff8080;
+    --btn-primary: #5a5aaa;
+    --btn-danger: #aa5a5a;
+    --btn-edit: #5a5aaa;
+    --hover-color: rgba(120, 120, 255, 0.15);
+    --icon-filter: brightness(0.9) contrast(1.2) hue-rotate(200deg);
+    --accent-color-light: rgba(128, 128, 255, 0.2);
+    --error-bg: rgba(200, 0, 0, 0.3);
+    --error-border: rgba(255, 70, 70, 0.4);
+    --error-text: #ff8080;
+    --success-bg: rgba(0, 140, 0, 0.3);
+    --success-border: rgba(60, 255, 60, 0.4);
+    --success-text: #80ff80;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  html, body {
+}
+
+html, body {
     height: 100%;
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-primary);
+    background-image: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     color: var(--text-primary);
-  }
-  
-  #root {
+}
+
+#root {
     height: 100%;
     width: 100%;
-  }
-  
-  #root > div {
+}
+
+#root > div {
     height: 100%;
-  }
-  
-  button {
+}
+
+button {
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-  }
-  
-  input, select, textarea {
+}
+
+input, select, textarea {
     font-family: 'Poppins', sans-serif;
-  }
+}

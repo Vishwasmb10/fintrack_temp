@@ -9,11 +9,33 @@
     display: flex;
     flex-direction: column;
     background-color: var(--bg-secondary);
+    background-image: linear-gradient(145deg, var(--bg-secondary), #2a2a5a);
     transition: transform 0.2s ease;
+    border: 1px solid rgba(100, 100, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(100, 100, 255, 0.2), 
+      rgba(150, 150, 255, 0.3), 
+      rgba(100, 100, 255, 0.2), 
+      transparent);
   }
   
   .card:hover {
     transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
   }
   
   .info {
@@ -21,8 +43,10 @@
     padding: 8px 10px;
     border-radius: 8px;
     text-align: center;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background-color: rgba(20, 20, 40, 0.5);
+    background-image: linear-gradient(145deg, rgba(20, 20, 40, 0.5), rgba(30, 30, 60, 0.5));
+    border: 1px solid rgba(100, 100, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   }
   
   .info > p:first-child {
@@ -32,6 +56,7 @@
     margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    text-shadow: 0 0 5px rgba(100, 100, 255, 0.3);
   }
   
   .info > p:first-child + p {
@@ -57,44 +82,82 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .deleteBtn::before, .editBtn::before, .submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
   }
   
   .deleteBtn:hover, .editBtn:hover, .submitBtn:hover {
     opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .deleteBtn:hover::before, .editBtn:hover::before, .submitBtn:hover::before {
+    left: 100%;
   }
   
   .deleteBtn {
-    background-color: var(--btn-danger);
+    background: linear-gradient(145deg, #9a4a4a, #aa5a5a);
     color: white;
   }
   
   .editBtn {
-    background-color: var(--btn-edit);
+    background: linear-gradient(145deg, #4a4a9a, #5a5aaa);
     color: white;
   }
   
   .submitBtn {
-    background-color: var(--btn-primary);
+    background: linear-gradient(145deg, #4a4a9a, #5a5aaa);
     color: white;
   }
   
   .debit {
     border-left: 4px solid var(--debit-color);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
   }
   
   .credit {
     border-left: 4px solid var(--credit-color);
+    box-shadow: 0 0 10px rgba(107, 255, 107, 0.2);
   }
   
   .inputField {
     width: 100%;
     padding: 8px;
     border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-primary);
+    border: 1px solid rgba(100, 100, 255, 0.2);
+    background-color: rgba(20, 20, 40, 0.5);
+    background-image: linear-gradient(145deg, rgba(20, 20, 40, 0.5), rgba(30, 30, 60, 0.5));
     color: var(--text-primary);
     font-size: 0.9rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-color: rgba(150, 150, 255, 0.4);
+    box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.2),
+                inset 0 1px 3px rgba(0, 0, 0, 0.2);
   }
   
   @media (max-width: 768px) {
