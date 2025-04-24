@@ -15,16 +15,14 @@
   }
   
   .pageWrapper {
-    min-height: 70vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #93c5fd;
-    background-image: linear-gradient(120deg, #1e40af 0%, #3b82f6 100%);
-    padding: 0;
-    border-radius: 10px;
-    margin: 0;
+    background-color: var(--bg-primary);
+    padding: 20px;
+    box-sizing: border-box;
   }
   
   .container {
@@ -32,159 +30,86 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    max-width: 400px;
   }
   
   .formWrapper {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
     width: 100%;
-    max-width: 600px;
-    padding: 3rem;
-    animation: fadeIn 0.8s ease-out;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2.5rem 2rem;
+    animation: fadeIn 0.5s ease-out;
+    transition: transform 0.3s ease;
     position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-  
-  .formWrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(30, 64, 175, 0.3);
-  }
-  
-  .formWrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #1e40af, #3b82f6, #1e40af);
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite linear;
+    border: 1px solid var(--border-color);
   }
   
   .title {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #1e40af;
-    margin-bottom: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
     text-align: center;
-    width: 100%;
-    position: relative;
-  }
-  
-  .title::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: #3b82f6;
-    transition: width 0.4s ease;
-  }
-  
-  .formWrapper:hover .title::after {
-    width: 120px;
+    letter-spacing: -0.5px;
   }
   
   .form {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.25rem;
     width: 100%;
   }
   
   .inputGroup {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    animation: fadeIn 0.5s ease-out forwards;
-    opacity: 0;
-    width: 100%;
-  }
-  
-  .inputGroup:nth-child(1) {
-    animation-delay: 0.2s;
-  }
-  
-  .inputGroup:nth-child(2) {
-    animation-delay: 0.4s;
+    gap: 0.5rem;
   }
   
   .label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: #1e40af;
-    transition: color 0.3s ease;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
   }
   
   .input {
-    padding: 1rem 1.25rem;
-    border: 2px solid #bfdbfe;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-color);
     border-radius: 8px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    background-color: #f0f7ff;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     width: 100%;
     box-sizing: border-box;
   }
   
-  .input::placeholder {
-    color: #d6d3d1;
-  }
-  
   .input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-    background-color: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-light);
   }
   
   .button {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    background-color: #3b82f6;
+    margin-top: 0.5rem;
+    padding: 0.85rem;
+    background-color: var(--accent-color);
     color: white;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: 0.6s;
-    opacity: 0;
+    transition: all 0.2s ease;
     width: 100%;
-  }
-  
-  .button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    letter-spacing: 0.3px;
   }
   
   .button:hover {
-    background-color: #1e40af;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-  }
-  
-  .button:hover::before {
-    left: 100%;
+    transform: translateY(-1px);
+    box-shadow: var(--card-shadow);
   }
   
   .button:active {
@@ -192,227 +117,79 @@
   }
   
   .button:disabled {
-    background-color: #60a5fa;
+    opacity: 0.7;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
   }
   
   .message {
-    padding: 1rem;
+    padding: 0.85rem;
     border-radius: 8px;
-    font-size: 1rem;
-    animation: fadeIn 0.5s ease;
-    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
   }
   
   .error {
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #b91c1c;
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--error-text);
   }
   
   .success {
-    background-color: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    color: #166534;
-    animation: pulse 1s ease;
+    background-color: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success-text);
   }
   
   /* Theme toggle button */
   .themeToggle {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    width: 40px;
-    height: 40px;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--bg-secondary);
+    border: none;
+    box-shadow: var(--card-shadow);
     border-radius: 50%;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: white;
-    border: 2px solid #bfdbfe;
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
-    transition: all 0.3s ease;
-    z-index: 10;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-    overflow: hidden;
-  }
-  
-  /* Sun icon for light mode - yellow color */
-  .themeToggle::before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: #facc15; /* Yellow sun center */
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-  
-  /* Sun rays - yellow color */
-  .themeToggle::after {
-    content: '';
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    border: 2px solid #facc15; /* Yellow sun rays */
-    border-radius: 50%;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-  }
-  
-  /* Moon icon for dark mode - blue color */
-  [data-theme="dark"] .themeToggle::before {
-    transform: translateX(8px);
-    width: 16px;
-    height: 16px;
-    background: #60a5fa; /* Blue moon */
-  }
-  
-  [data-theme="dark"] .themeToggle::after {
-    width: 22px;
-    height: 22px;
-    border: 2px solid transparent;
-    border-bottom-color: #60a5fa; /* Blue crescent */
-    border-left-color: #60a5fa; /* Blue crescent */
-    border-radius: 50%;
-    transform: rotate(45deg);
+    transition: transform 0.2s ease;
   }
   
   .themeToggle:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.3);
-    border-color: #3b82f6;
+    transform: scale(1.1);
   }
   
-  .themeToggle:active {
-    transform: translateY(1px);
+  .themeToggle img {
+    width: 18px;
+    height: 18px;
+    filter: var(--icon-filter);
   }
   
-  /* CSS variables for theming */
-  :root {
-    /* Light theme (default - now using cobalt/royal blue theme) */
-    --bg-color: #93c5fd;
-    --bg-gradient: linear-gradient(120deg, #1e40af 0%, #3b82f6 100%);
-    --form-bg: white;
-    --title-color: #1e40af;
-    --label-color: #1e40af;
-    --input-border: #bfdbfe;
-    --input-bg: #f0f7ff;
-    --input-focus-border: #3b82f6;
-    --button-bg: #3b82f6;
-    --button-hover-bg: #1e40af;
-    --button-color: white;
-    --success-bg: #f0fdf4;
-    --success-border: #bbf7d0;
-    --success-color: #166534;
-    --error-bg: #fef2f2;
-    --error-border: #fecaca;
-    --error-color: #b91c1c;
-    --shimmer-gradient: linear-gradient(90deg, #1e40af, #3b82f6, #1e40af);
-    --title-after-bg: #3b82f6;
-    --toggle-bg: white;
-    --toggle-border: #bfdbfe;
-    --toggle-color: #1e40af;
-    --toggle-icon: #facc15; /* Yellow for light mode icon */
-  }
-  
-  /* Dark theme */
-  [data-theme="dark"] {
-    --bg-color: #0f172a;
-    --bg-gradient: linear-gradient(120deg, #0c1634 0%, #1e3a8a 100%);
-    --form-bg: #1e293b;
-    --title-color: #60a5fa;
-    --label-color: #93c5fd;
-    --input-border: #2c4f7c;
-    --input-bg: #0f172a;
-    --input-focus-border: #60a5fa;
-    --button-bg: #3b82f6;
-    --button-hover-bg: #1d4ed8;
-    --button-color: white;
-    --success-bg: #064e3b;
-    --success-border: #166534;
-    --success-color: #bbf7d0;
-    --error-bg: #450a0a;
-    --error-border: #b91c1c;
-    --error-color: #fecaca;
-    --shimmer-gradient: linear-gradient(90deg, #60a5fa, #93c5fd, #60a5fa);
-    --title-after-bg: #60a5fa;
-    --toggle-bg: #1e293b;
-    --toggle-border: #60a5fa;
-    --toggle-color: #60a5fa;
-    --toggle-icon: #60a5fa; /* Blue for dark mode icon */
-  }
-  
-  /* Dark theme toggle button */
-  [data-theme="dark"] .themeToggle {
-    background-color: var(--toggle-bg);
-    border-color: var(--toggle-border);
-    color: var(--toggle-color);
-  }
-  
-  /* Apply theme variables to existing classes */
-  .pageWrapper {
-    background-color: var(--bg-color);
-    background-image: var(--bg-gradient);
-    transition: background-color 0.3s ease, background-image 0.3s ease;
-  }
-  
-  .formWrapper {
-    background-color: var(--form-bg);
-    position: relative; /* Ensure it can contain the absolutely positioned button */
-  }
-  
-  .formWrapper::before {
-    background: var(--shimmer-gradient);
-  }
-  
-  .title {
-    color: var(--title-color);
-  }
-  
-  .title::after {
-    background-color: var(--title-after-bg);
-  }
-  
-  .label {
-    color: var(--label-color);
-  }
-  
-  .input {
-    border-color: var(--input-border);
-    background-color: var(--input-bg);
-    color: var(--label-color);
-  }
-  
-  .input:focus {
-    border-color: var(--input-focus-border);
-  }
-  
-  .button {
-    background-color: var(--button-bg);
-    color: var(--button-color);
-  }
-  
-  .button:hover {
-    background-color: var(--button-hover-bg);
-  }
-  
-  .success {
-    background-color: var(--success-bg);
-    border-color: var(--success-border);
-    color: var(--success-color);
-  }
-  
-  .error {
-    background-color: var(--error-bg);
-    border-color: var(--error-border);
-    color: var(--error-color);
+  @media (max-width: 768px) {
+    .container {
+      max-width: 340px;
+    }
+    
+    .formWrapper {
+      padding: 2rem 1.5rem;
+    }
+    
+    .title {
+      font-size: 1.6rem;
+    }
+    
+    .input {
+      padding: 0.7rem 0.9rem;
+    }
+    
+    .button {
+      padding: 0.8rem;
+    }
   }

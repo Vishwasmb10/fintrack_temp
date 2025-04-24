@@ -1,37 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "../src/supabaseClient";
-import styles from "../stylesheets/login.module.css";
+import styles from "../stylesheets/Login.module.css";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../src/ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ text: "", isError: false });
-  const [theme, setTheme] = useState("light");
   const navigate = useNavigate();
-
-  // Theme initialization (unchanged)
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute("data-theme", saved);
-    } else if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  };
+  const { isDarkMode } = useContext(ThemeContext);
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -45,7 +25,6 @@ export default function LoginPage() {
       localStorage.setItem("isAuth", "true");
       setMessage({ text: "Logged in successfully! Redirecting…", isError: false });
 
-      // Wait just enough to show the message, then redirect
       setTimeout(() => {
         navigate("/", { replace: true });
       }, 800);
@@ -60,17 +39,8 @@ export default function LoginPage() {
     <div className={styles.pageWrapper}>
       <div className={styles.container}>
         <div className={styles.formWrapper}>
-          <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
-            {theme === "light" ? (
-              /* Moon SVG */
-              <svg /* … */ />
-            ) : (
-              /* Sun SVG */
-              <svg /* … */ />
-            )}
-          </button>
-
-          <h1 className={styles.title}>Tea Master</h1>
+          <ThemeToggle />
+          <h1 className={styles.title}>FinTrack</h1>
           <form className={styles.form} onSubmit={handleAuth}>
             <div className={styles.inputGroup}>
               <label htmlFor="email" className={styles.label}>Email</label>
