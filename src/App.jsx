@@ -6,9 +6,11 @@ import Loader from '../components/Loader';
 import sortTransactions from '../jsFiles/sortTransactions';
 import { fetchDetails, updateNet, today } from '../jsFiles/dataFetchFunctions';
 import Calendar from '../components/Calendar';
+import logoutIconDark from "./assets/logoutdark.png";
+import logoutIconLight from "./assets/logoutlight.png";
 import ThemeToggle from '../components/ThemeToggle';
 import calendarIcon from './assets/calendar.png';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Stats from '../components/Stats';
 import statsIcon from './assets/statsIcon.png';
 import { Link } from 'react-router-dom';
@@ -25,6 +27,7 @@ function App() {
   const [pickDate, setPickDate] = useState(false);
   const { page } = useParams();
   const { isDarkMode } = useContext(ThemeContext);
+  const navigate=useNavigate();
 
   function formDisplay() {
     setIsClicked((isClicked) => !isClicked);
@@ -33,6 +36,13 @@ function App() {
 
   function datePick() {
     setPickDate((pickDate) => !pickDate);
+  }
+
+  function handleLogout(){
+    localStorage.removeItem("isAuth");
+    // supabase.auth.signOut();
+    navigate('/login', { replace: true });
+
   }
     
   useEffect(() => {
@@ -96,6 +106,9 @@ function App() {
                 <img src={statsIcon} alt="statsIcon" />
               </button>
             </Link>
+              <button type="button" className={style.logoutBtn} onClick={handleLogout}>
+                <img src={isDarkMode?logoutIconDark:logoutIconLight} alt="logout" />
+              </button>
           </div>
           
           {pickDate && (
