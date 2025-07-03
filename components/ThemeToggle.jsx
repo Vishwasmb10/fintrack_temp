@@ -7,15 +7,17 @@ function ThemeToggle() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   
   return (
-    <div className={style.toggleContainer}>
-      <button 
-        onClick={toggleTheme} 
-        className={style.themeToggle}
-        aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-      >
-        {isDarkMode ? '☀️' : '🌙'}
-      </button>
-    </div>
+    <button 
+      onClick={toggleTheme} 
+      className={style.themeToggle}
+      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+    >
+      <div className={style.iconContainer}>
+        <span className={`${style.icon} ${isDarkMode ? style.sun : style.moon}`}>
+          {isDarkMode ? '☀️' : '🌙'}
+        </span>
+      </div>
+    </button>
   );
 }
 

@@ -3,15 +3,10 @@
     to { opacity: 1; transform: translateY(0); }
   }
   
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  
-  @keyframes shimmer {
-    0% { background-position: -100% 0; }
-    100% { background-position: 100% 0; }
+  @keyframes metallicShine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
   
   .pageWrapper {
@@ -21,6 +16,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-primary);
+    background-image: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     padding: 20px;
     box-sizing: border-box;
   }
@@ -35,6 +31,7 @@
   
   .formWrapper {
     background-color: var(--bg-secondary);
+    background-image: linear-gradient(145deg, var(--bg-secondary), var(--accent-color-light));
     border-radius: 16px;
     box-shadow: var(--card-shadow);
     width: 100%;
@@ -43,6 +40,22 @@
     transition: transform 0.3s ease;
     position: relative;
     border: 1px solid var(--border-color);
+    overflow: hidden;
+  }
+  
+  .formWrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(100, 100, 255, 0.2), 
+      rgba(150, 150, 255, 0.4), 
+      rgba(100, 100, 255, 0.2), 
+      transparent);
   }
   
   .title {
@@ -52,6 +65,8 @@
     margin-bottom: 2rem;
     text-align: center;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 10px rgba(110, 110, 255, 0.5);
   }
   
   .form {
@@ -70,7 +85,7 @@
   .label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     letter-spacing: 0.3px;
   }
   
@@ -81,22 +96,30 @@
     font-size: 0.95rem;
     transition: all 0.2s ease;
     background-color: var(--bg-primary);
+    background-image: linear-gradient(145deg, var(--bg-primary), var(--bg-secondary));
     color: var(--text-primary);
     width: 100%;
     box-sizing: border-box;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   }
   
   .input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px var(--accent-color-light);
+    box-shadow: 0 0 0 3px var(--accent-color-light),
+                inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
   }
   
   .button {
     margin-top: 0.5rem;
     padding: 0.85rem;
-    background-color: var(--accent-color);
-    color: white;
+    background: linear-gradient(145deg, var(--btn-primary), var(--accent-color));
+    color: #ffffff;
     font-weight: 600;
     font-size: 1rem;
     border: none;
@@ -105,21 +128,50 @@
     transition: all 0.2s ease;
     width: 100%;
     letter-spacing: 0.3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
   }
   
   .button:hover {
     transform: translateY(-1px);
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, var(--accent-color), var(--btn-primary));
+  }
+  
+  .button:hover::before {
+    left: 100%;
   }
   
   .button:active {
     transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
   }
   
   .button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
+    background: linear-gradient(145deg, var(--btn-primary), var(--accent-color));
   }
   
   .message {
@@ -130,18 +182,22 @@
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
   }
   
   .error {
     background-color: var(--error-bg);
     border: 1px solid var(--error-border);
     color: var(--error-text);
+    text-shadow: 0 0 5px rgba(255, 50, 50, 0.5);
   }
   
   .success {
     background-color: var(--success-bg);
     border: 1px solid var(--success-border);
     color: var(--success-text);
+    text-shadow: 0 0 5px rgba(50, 255, 50, 0.5);
   }
   
   /* Theme toggle button */
@@ -149,9 +205,10 @@
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    background-color: var(--bg-secondary);
-    border: none;
-    box-shadow: var(--card-shadow);
+    background: linear-gradient(145deg, #2a2a5a, #3a3a7a);
+    border: 1px solid rgba(100, 100, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -164,12 +221,13 @@
   
   .themeToggle:hover {
     transform: scale(1.1);
+    background: linear-gradient(145deg, #3a3a7a, #4a4a9a);
   }
   
   .themeToggle img {
     width: 18px;
     height: 18px;
-    filter: var(--icon-filter);
+    filter: brightness(0.9) contrast(1.2) hue-rotate(200deg);
   }
   
   @media (max-width: 768px) {

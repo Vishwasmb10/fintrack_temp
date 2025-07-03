@@ -36,7 +36,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={styles.pageWrapper}>
+    <div className={`${styles.pageWrapper} ${isDarkMode ? styles.darkMode : ''}`}>
       <div className={styles.container}>
         <div className={styles.formWrapper}>
           <ThemeToggle />
