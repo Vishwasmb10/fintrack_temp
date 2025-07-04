@@ -15,6 +15,7 @@ import Stats from '../components/Stats';
 import statsIcon from './assets/statsIcon.png';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
+import BarGraph from './BarGraph';
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -78,6 +79,28 @@ function App() {
     });
   }, [transactions]);
 
+  // Helper to build dailyData for the current month
+  const getDailyData = () => {
+    const map = {};
+    creditData.forEach((c) => {
+      if (!c.date) return;
+      if (!map[c.date]) map[c.date] = { date: c.date, credit: 0, debit: 0 };
+      map[c.date].credit += Number(c.amount) || 0;
+    });
+    debitData.forEach((d) => {
+      if (!d.date) return;
+      if (!map[d.date]) map[d.date] = { date: d.date, credit: 0, debit: 0 };
+      map[d.date].debit += Number(d.amount) || 0;
+    });
+    // Compute net as credit - debit for each date
+    Object.values(map).forEach((entry) => {
+      entry.net = (entry.credit || 0) - (entry.debit || 0);
+    });
+    return Object.values(map)
+      .filter((entry) => entry.date)
+      .sort((a, b) => (a.date && b.date ? a.date.localeCompare(b.date) : 0));
+  };
+
   return (
     <div className={`${style.app} ${isDarkMode ? style.darkMode : ''}`}>
       {!page || page !== 'stats' ? (
@@ -135,6 +158,8 @@ function App() {
             <h2 className={style.sectionTitle}>Transactions for {date}</h2>
             <div className={style.cards}>{cards}</div>
           </div>
+          {/* Bar Graph for daily transactions */}
+          <BarGraph dailyData={getDailyData()} />
         </>
       ) : (
         <Stats />
