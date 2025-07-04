@@ -42,6 +42,24 @@
     border: 1px solid var(--border-color);
     overflow: hidden;
   }
+
+  /* Enhanced light theme styles for login */
+  [data-theme='light'] .formWrapper {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 
+                0 8px 25px rgba(0, 0, 0, 0.08),
+                inset 0 0 2px rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(73, 80, 87, 0.15);
+  }
+
+  /* Enhanced dark theme styles for login */
+  [data-theme='dark'] .formWrapper {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 
+                0 8px 25px rgba(0, 0, 0, 0.4),
+                inset 0 0 2px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   
   .formWrapper::before {
     content: '';
@@ -68,6 +86,22 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
                  0 0 10px rgba(110, 110, 255, 0.5);
   }
+
+  /* Enhanced dark theme title */
+  [data-theme='dark'] .title {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3);
+    font-weight: 800;
+  }
+
+  /* Enhanced light theme title */
+  [data-theme='light'] .title {
+    color: #1a1a1a;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15),
+                 0 0 20px rgba(0, 0, 0, 0.1);
+    font-weight: 800;
+  }
   
   .form {
     display: flex;
@@ -88,6 +122,18 @@
     color: var(--text-secondary);
     letter-spacing: 0.3px;
   }
+
+  /* Enhanced light theme labels */
+  [data-theme='light'] .label {
+    color: #495057;
+    font-weight: 700;
+  }
+
+  /* Enhanced dark theme labels */
+  [data-theme='dark'] .label {
+    color: #e6e6e6;
+    font-weight: 700;
+  }
   
   .input {
     padding: 0.75rem 1rem;
@@ -102,6 +148,24 @@
     box-sizing: border-box;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   }
+
+  /* Enhanced dark theme inputs */
+  [data-theme='dark'] .input {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* Enhanced light theme inputs */
+  [data-theme='light'] .input {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border: 1.5px solid rgba(73, 80, 87, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    font-weight: 500;
+  }
   
   .input:focus {
     outline: none;
@@ -109,10 +173,36 @@
     box-shadow: 0 0 0 3px var(--accent-color-light),
                 inset 0 1px 3px rgba(0, 0, 0, 0.3);
   }
+
+  /* Enhanced dark theme input focus */
+  [data-theme='dark'] .input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.3),
+                inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Enhanced light theme input focus */
+  [data-theme='light'] .input:focus {
+    border-color: #495057;
+    box-shadow: 0 0 0 3px rgba(73, 80, 87, 0.2),
+                inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
   
   .input::placeholder {
     color: var(--text-secondary);
     opacity: 0.7;
+  }
+
+  /* Enhanced light theme placeholder */
+  [data-theme='light'] .input::placeholder {
+    color: #6c757d;
+    opacity: 0.8;
+  }
+
+  /* Enhanced dark theme placeholder */
+  [data-theme='dark'] .input::placeholder {
+    color: #b0b0b0;
+    opacity: 0.8;
   }
   
   .button {
@@ -132,6 +222,24 @@
                 inset 0 1px 1px rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
+  }
+
+  /* Enhanced dark theme button */
+  [data-theme='dark'] .button {
+    background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* Enhanced light theme button */
+  [data-theme='light'] .button {
+    background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-weight: 700;
   }
   
   .button::before {
@@ -155,6 +263,20 @@
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4),
                 inset 0 1px 1px rgba(255, 255, 255, 0.2);
     background: linear-gradient(145deg, var(--accent-color), var(--btn-primary));
+  }
+
+  /* Enhanced dark theme button hover */
+  [data-theme='dark'] .button:hover {
+    background: linear-gradient(145deg, #0b5ed7, #0a58ca);
+    box-shadow: 0 6px 16px rgba(13, 110, 253, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Enhanced light theme button hover */
+  [data-theme='light'] .button:hover {
+    background: linear-gradient(145deg, #0b5ed7, #0a58ca);
+    box-shadow: 0 6px 16px rgba(13, 110, 253, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.4);
   }
   
   .button:hover::before {

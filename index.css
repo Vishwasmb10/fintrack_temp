@@ -31,34 +31,34 @@
 }
 
 [data-theme='light'] {
-    /* Light Metallic Theme */
-    --bg-primary: #e0e0e0;
-    --bg-secondary: #d0d0d0;
-    --text-primary: #1a1a1a;
-    --text-secondary: #505050;
-    --accent-color: #707070;
-    --border-color: rgba(80, 80, 80, 0.15);
-    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
-                   0 2px 8px rgba(0, 0, 0, 0.05),
-                   inset 0 0 2px rgba(255, 255, 255, 0.5);
+    /* Light Metallic Theme - Enhanced */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --accent-color: #495057;
+    --border-color: rgba(73, 80, 87, 0.2);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 
+                   0 2px 8px rgba(0, 0, 0, 0.1),
+                   inset 0 0 2px rgba(255, 255, 255, 0.6);
     --glass-effect: blur(16px) saturate(100%);
-    --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-    --glass-background: rgba(240, 240, 240, 0.7);
-    --metallic-gradient: linear-gradient(145deg, rgba(220, 220, 220, 0.8), rgba(190, 190, 190, 0.9));
-    --credit-color: #50a050;
-    --debit-color: #a05050;
-    --btn-primary: #707070;
-    --btn-danger: #a05050;
-    --btn-edit: #707070;
-    --hover-color: rgba(80, 80, 80, 0.1);
-    --icon-filter: brightness(0.9) contrast(1.1);
-    --accent-color-light: rgba(80, 80, 80, 0.1);
-    --error-bg: rgba(160, 80, 80, 0.08);
-    --error-border: rgba(160, 80, 80, 0.2);
-    --error-text: #a05050;
-    --success-bg: rgba(80, 160, 80, 0.08);
-    --success-border: rgba(80, 160, 80, 0.2);
-    --success-text: #50a050;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-background: rgba(248, 249, 250, 0.8);
+    --metallic-gradient: linear-gradient(145deg, rgba(233, 236, 239, 0.9), rgba(222, 226, 230, 0.95));
+    --credit-color: #28a745;
+    --debit-color: #dc3545;
+    --btn-primary: #495057;
+    --btn-danger: #dc3545;
+    --btn-edit: #495057;
+    --hover-color: rgba(73, 80, 87, 0.15);
+    --icon-filter: brightness(0.8) contrast(1.2);
+    --accent-color-light: rgba(73, 80, 87, 0.15);
+    --error-bg: rgba(220, 53, 69, 0.1);
+    --error-border: rgba(220, 53, 69, 0.3);
+    --error-text: #dc3545;
+    --success-bg: rgba(40, 167, 69, 0.1);
+    --success-border: rgba(40, 167, 69, 0.3);
+    --success-text: #28a745;
 }
 
 * {
