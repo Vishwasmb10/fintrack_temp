@@ -15,27 +15,11 @@
   position: relative;
 }
 
-/* Enhanced light theme cards */
-[data-theme='light'] .card {
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  border: 1px solid rgba(73, 80, 87, 0.15);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 
-              0 3px 10px rgba(0, 0, 0, 0.05),
-              inset 0 0 2px rgba(255, 255, 255, 0.8);
-}
-
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
               0 3px 10px rgba(0, 0, 0, 0.3),
               inset 0 0 2px rgba(255, 255, 255, 0.05);
-}
-
-/* Enhanced light theme card hover */
-[data-theme='light'] .card:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 
-              0 5px 15px rgba(0, 0, 0, 0.1),
-              inset 0 0 2px rgba(255, 255, 255, 0.9);
 }
 
 .card::before {
@@ -76,14 +60,6 @@
   letter-spacing: 0.05em;
 }
 
-/* Enhanced light theme table header */
-[data-theme='light'] .tableHeader {
-  background: linear-gradient(145deg, #e9ecef, #dee2e6);
-  border-bottom: 1px solid rgba(73, 80, 87, 0.2);
-  color: #495057;
-  font-weight: 700;
-}
-
 .debit .tableHeader {
   border-top: 3px solid var(--debit-color);
 }
@@ -109,12 +85,6 @@
   background: linear-gradient(145deg, rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.8));
 }
 
-/* Enhanced light theme table row */
-[data-theme='light'] .tableRow {
-  border-bottom: 1px solid rgba(73, 80, 87, 0.1);
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-}
-
 .tableRow > div {
   padding: 10px;
   flex: 1;
@@ -129,20 +99,8 @@
   color: var(--text-primary);
 }
 
-/* Enhanced light theme table cell */
-[data-theme='light'] .tableRow > div:last-child {
-  color: #000000;
-  font-weight: 600;
-}
-
 .tableCell {
   color: var(--text-primary);
-}
-
-/* Enhanced light theme table cell */
-[data-theme='light'] .tableCell {
-  color: #212529;
-  font-weight: 500;
 }
 
 .buttonContainer {
@@ -150,11 +108,6 @@
   padding: 10px;
   gap: 8px;
   background: linear-gradient(145deg, rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.8));
-}
-
-/* Enhanced light theme button container */
-[data-theme='light'] .buttonContainer {
-  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
 }
 
 .deleteBtn, .editBtn, .submitBtn {
@@ -178,45 +131,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
-/* Enhanced dark theme button hover effects */
-[data-theme='dark'] .deleteBtn:hover {
-  background: linear-gradient(145deg, #c82333, #bd2130);
-  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  filter: brightness(1.05);
-}
-
-[data-theme='dark'] .editBtn:hover {
-  background: linear-gradient(145deg, #0b5ed7, #0a58ca);
-  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  filter: brightness(1.05);
-}
-
-[data-theme='dark'] .submitBtn:hover {
-  background: linear-gradient(145deg, #218838, #1e7e34);
-  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  filter: brightness(1.05);
-}
-
 .deleteBtn:active, .editBtn:active, .submitBtn:active {
   transform: translateY(0);
   filter: brightness(0.95);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.03);
-}
-
-/* Enhanced dark theme button active states */
-[data-theme='dark'] .deleteBtn:active {
-  background: linear-gradient(145deg, #bd2130, #a71e2a);
-  box-shadow: 0 2px 3px rgba(220, 53, 69, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-[data-theme='dark'] .editBtn:active {
-  background: linear-gradient(145deg, #0a58ca, #084298);
-  box-shadow: 0 2px 3px rgba(13, 110, 253, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-[data-theme='dark'] .submitBtn:active {
-  background: linear-gradient(145deg, #1e7e34, #1c7430);
-  box-shadow: 0 2px 3px rgba(40, 167, 69, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 .deleteBtn {
@@ -224,58 +142,13 @@
   color: white;
 }
 
-/* Enhanced dark theme delete button */
-[data-theme='dark'] .deleteBtn {
-  background: linear-gradient(145deg, #dc3545, #c82333);
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Enhanced light theme delete button */
-[data-theme='light'] .deleteBtn {
-  background: linear-gradient(145deg, #dc3545, #c82333);
-  color: white;
-  font-weight: 600;
-}
-
 .editBtn {
   background: linear-gradient(145deg, rgba(80, 80, 80, 0.7), rgba(60, 60, 60, 0.9));
   color: white;
 }
 
-/* Enhanced dark theme edit button */
-[data-theme='dark'] .editBtn {
-  background: linear-gradient(145deg, #0d6efd, #0b5ed7);
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Enhanced light theme edit button */
-[data-theme='light'] .editBtn {
-  background: linear-gradient(145deg, #0d6efd, #0b5ed7);
-  color: white;
-  font-weight: 600;
-}
-
 .submitBtn {
   background: linear-gradient(145deg, rgba(100, 100, 100, 0.7), rgba(80, 80, 80, 0.9));
-  color: white;
-  font-weight: 600;
-}
-
-/* Enhanced dark theme submit button */
-[data-theme='dark'] .submitBtn {
-  background: linear-gradient(145deg, #28a745, #218838);
-  color: white;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Enhanced light theme submit button */
-[data-theme='light'] .submitBtn {
-  background: linear-gradient(145deg, #28a745, #218838);
   color: white;
   font-weight: 600;
 }
@@ -292,33 +165,15 @@
   -webkit-backdrop-filter: blur(4px);
 }
 
-/* Enhanced light theme input field */
-[data-theme='light'] .inputField {
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  border: 1px solid rgba(73, 80, 87, 0.2);
-  color: #000000;
-}
-
 .inputField:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(128, 128, 128, 0.25);
 }
 
-/* Enhanced light theme input field focus */
-[data-theme='light'] .inputField:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
-}
-
 .editForm {
   padding: 10px;
   background: linear-gradient(145deg, rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.8));
-}
-
-/* Enhanced light theme edit form */
-[data-theme='light'] .editForm {
-  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
 }
 
 .editFormRow {
@@ -333,12 +188,6 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-/* Enhanced light theme form labels */
-[data-theme='light'] .editFormRow label {
-  color: #495057;
-  font-weight: 700;
 }
 
 @media (max-width: 768px) {
