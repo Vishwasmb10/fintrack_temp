@@ -26,7 +26,7 @@ export default function LoginPage() {
       setMessage({ text: "Logged in successfully! Redirecting…", isError: false });
 
       setTimeout(() => {
-        navigate("/", { replace: true });
+        navigate("/app", { replace: true });
       }, 800);
     } catch (err) {
       setMessage({ text: err.message, isError: true });

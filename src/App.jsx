@@ -41,7 +41,7 @@ function App() {
   function handleLogout(){
     localStorage.removeItem("isAuth");
     // supabase.auth.signOut();
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
 
   }
     
@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className={`${style.app} ${isDarkMode ? style.darkMode : ''}`}>
-      {page !== 'stats' ? (
+      {!page || page !== 'stats' ? (
         <>
           <ThemeToggle />
           <div className={style.header}>
@@ -101,7 +101,7 @@ function App() {
             <button className={style.iconBtn} onClick={datePick}>
               <img src={calendarIcon} alt="calendar" />
             </button>
-            <Link to="/stats">
+            <Link to="/app/stats">
               <button className={style.iconBtn}>
                 <img src={statsIcon} alt="statsIcon" />
               </button>
