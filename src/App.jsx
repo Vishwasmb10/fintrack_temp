@@ -16,6 +16,7 @@ import statsIcon from './assets/statsIcon.png';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
 import BarGraph from './BarGraph';
+import FloatingActionButtons from '../components/FloatingActionButtons';
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -29,6 +30,7 @@ function App() {
   const { page } = useParams();
   const { isDarkMode } = useContext(ThemeContext);
   const navigate=useNavigate();
+  const [activeTab, setActiveTab] = useState('cards');
 
   function formDisplay() {
     setIsClicked((isClicked) => !isClicked);
@@ -116,30 +118,54 @@ function App() {
               <div className={style.netAmount}><Loader /></div>
             )}
           </div>
-          
-          <div className={style.actionButtons}>
-              <button type='button' className={style.addBtn} onClick={formDisplay}>
-                +
-              </button>
-            <button className={style.iconBtn} onClick={datePick}>
-              <img src={calendarIcon} alt="calendar" />
+
+          {/* Tab Navigation */}
+          <div className={style.tabNav}>
+            <button
+              className={activeTab === 'cards' ? style.activeTab : ''}
+              onClick={() => setActiveTab('cards')}
+            >
+              Cards
             </button>
-            <Link to="/app/stats">
-              <button className={style.iconBtn}>
-                <img src={statsIcon} alt="statsIcon" />
-              </button>
-            </Link>
-              <button type="button" className={style.logoutBtn} onClick={handleLogout}>
-                <img src={isDarkMode?logoutIconDark:logoutIconLight} alt="logout" />
-              </button>
+            <button
+              className={activeTab === 'graph' ? style.activeTab : ''}
+              onClick={() => setActiveTab('graph')}
+            >
+              Graph
+            </button>
           </div>
-          
+
+          {/* Tab Content */}
+          <div className={style.tabContent}>
+            {activeTab === 'cards' && (
+              <div className={style.cardsContainer}>
+                <h2 className={style.sectionTitle}>Transactions for {date}</h2>
+                <div className={style.cards}>{cards}</div>
+              </div>
+            )}
+            {activeTab === 'graph' && (
+              <BarGraph dailyData={getDailyData()} />
+            )}
+          </div>
+
+          {/* Floating Action Buttons rendered via Portal */}
+          <FloatingActionButtons
+            formDisplay={formDisplay}
+            datePick={datePick}
+            handleLogout={handleLogout}
+            isDarkMode={isDarkMode}
+            logoutIconDark={logoutIconDark}
+            logoutIconLight={logoutIconLight}
+            calendarIcon={calendarIcon}
+            statsIcon={statsIcon}
+          />
+
           {pickDate && (
             <div className={style.calendar}>
               <Calendar setDate={setDate} setPickDate={setPickDate} />
             </div>
           )}
-          
+
           {isClicked && (
             <div className={style.formOverlay}>
               <Form 
@@ -153,13 +179,6 @@ function App() {
               />
             </div>
           )}
-          
-          <div className={style.cardsContainer}>
-            <h2 className={style.sectionTitle}>Transactions for {date}</h2>
-            <div className={style.cards}>{cards}</div>
-          </div>
-          {/* Bar Graph for daily transactions */}
-          <BarGraph dailyData={getDailyData()} />
         </>
       ) : (
         <Stats />
