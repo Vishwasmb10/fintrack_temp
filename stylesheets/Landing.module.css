@@ -67,6 +67,17 @@
   text-shadow: 0 0 20px rgba(128, 128, 128, 0.3);
 }
 
+[data-theme='dark'] .appName {
+  color: #fff;
+  text-shadow: none;
+}
+
+[data-theme='light'] .appName {
+  color: #111;
+  text-shadow: none;
+  font-weight: 900;
+}
+
 .tagline {
   font-size: 1rem;
   color: var(--text-secondary);
@@ -313,6 +324,10 @@
 @media (max-width: 480px) {
   .header {
     padding: 1rem;
+  }
+
+  .appName {
+    text-align: center;
   }
 
   .hero {

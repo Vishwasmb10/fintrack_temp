@@ -42,7 +42,7 @@
     border: 1px solid var(--border-color);
     overflow: hidden;
   }
-
+  
   /* Enhanced light theme styles for login */
   [data-theme='light'] .formWrapper {
     background: linear-gradient(145deg, #ffffff, #f8f9fa);

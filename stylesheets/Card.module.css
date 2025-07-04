@@ -190,6 +190,105 @@
   letter-spacing: 0.05em;
 }
 
+[data-theme='light'] .card {
+  background: #fff;
+  border: 1.5px solid #dee2e6;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.04);
+}
+
+[data-theme='light'] .card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10), 0 3px 10px rgba(0,0,0,0.06);
+}
+
+[data-theme='light'] .tableHeader {
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #dee2e6;
+  color: #495057;
+}
+
+[data-theme='light'] .tableRow {
+  background: #fff;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+[data-theme='light'] .buttonContainer {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .editForm {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .editFormRow label {
+  color: #495057;
+}
+
+[data-theme='light'] .deleteBtn {
+  background: linear-gradient(145deg, #dc3545, #c82333);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.12);
+}
+
+[data-theme='light'] .editBtn {
+  background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.12);
+}
+
+[data-theme='light'] .submitBtn {
+  background: linear-gradient(145deg, #28a745, #218838);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.12);
+}
+
+[data-theme='light'] .deleteBtn:hover {
+  background: linear-gradient(145deg, #c82333, #bd2130);
+}
+
+[data-theme='light'] .editBtn:hover {
+  background: linear-gradient(145deg, #0b5ed7, #0a58ca);
+}
+
+[data-theme='light'] .submitBtn:hover {
+  background: linear-gradient(145deg, #218838, #1e7e34);
+}
+
+[data-theme='dark'] .deleteBtn {
+  background: linear-gradient(145deg, #dc3545, #c82333);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.18);
+}
+
+[data-theme='dark'] .editBtn {
+  background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.18);
+}
+
+[data-theme='dark'] .submitBtn {
+  background: linear-gradient(145deg, #28a745, #218838);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.18);
+}
+
+[data-theme='dark'] .deleteBtn:hover {
+  background: linear-gradient(145deg, #c82333, #bd2130);
+}
+
+[data-theme='dark'] .editBtn:hover {
+  background: linear-gradient(145deg, #0b5ed7, #0a58ca);
+}
+
+[data-theme='dark'] .submitBtn:hover {
+  background: linear-gradient(145deg, #218838, #1e7e34);
+}
+
 @media (max-width: 768px) {
   .card {
     max-width: 100%;

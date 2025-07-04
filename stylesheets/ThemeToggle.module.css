@@ -1,9 +1,5 @@
 /* stylesheets/ThemeToggle.module.css */
 .themeToggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 50%;
@@ -81,8 +77,6 @@
 
 @media (max-width: 768px) {
   .themeToggle {
-    top: 15px;
-    left: 15px;
     width: 40px;
     height: 40px;
   }

@@ -107,6 +107,13 @@
     overflow-x: auto;
   }
   
+  .themeToggleWrapper {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 200;
+  }
+  
   @media (max-width: 768px) {
     .currentMonth {
       margin-top: 50px;
@@ -129,5 +136,11 @@
     
     .statsTableWrapper {
       padding: 10px;
+    }
+
+    .themeToggleWrapper {
+      top: 8px;
+      right: 8px;
+      z-index: 201;
     }
   }

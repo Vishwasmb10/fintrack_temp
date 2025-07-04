@@ -6,6 +6,7 @@ import calendarIcon from '../src/assets/calendar.png'
 import homeIcon from "../src/assets/home.png"
 import StatsTable from "./StatsTable";
 import {fetchValuesByMonth} from "../jsFiles/dataFetchFunctions";
+import ThemeToggle from "./ThemeToggle";
 
 function Stats(props){
     const [dataByMonth,setDataByMonth]=useState([]);
@@ -27,7 +28,9 @@ function Stats(props){
     useEffect(()=>{fetchValuesByMonth(setDataByMonth,month)},[month]);
 
     return(
-        <div className={style.statsContainer}>
+        <>
+          <div className={style.themeToggleWrapper}><ThemeToggle /></div>
+          <div className={style.statsContainer}>
             <Link to='/'><img src={homeIcon} alt="homeIcon" className={style.homeIcon}/></Link>
             <p className={style.currentMonth} onClick={monthPick}>Month: {monthList[month-1]}</p>
             {/* <div className={style.calendarIcon}><img src={calendarIcon} alt="calendar" onClick={monthPick}/></div> */}
@@ -38,7 +41,8 @@ function Stats(props){
                         {months}
                         </ul>
               </div>}
-        </div>
+          </div>
+        </>
     );
 }
 
