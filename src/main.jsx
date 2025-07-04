@@ -10,6 +10,7 @@ import {
 import { ThemeProvider } from './ThemeContext';
 import LoginPage from '../components/Login.jsx';
 import App from './App.jsx';
+import Landing from './Landing.jsx';
 
 // Loader for protected routes: if not logged in, redirect to /login
 const requireAuth = () => {
@@ -19,33 +20,37 @@ const requireAuth = () => {
   return null;
 };
 
-// Loader for login route: if already logged in, redirect to /
+// Loader for login route: if already logged in, redirect to app
 const redirectIfAuth = () => {
   if (localStorage.getItem('isAuth') === 'true') {
-    throw redirect('/');
+    throw redirect('/app');
   }
   return null;
 };
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <Landing />,
+  },
+  {
     path: '/login',
     element: <LoginPage />,
     loader: redirectIfAuth,
   },
   {
-    path: '/:page',
+    path: '/app/:page',
     element: <App />,
     loader: requireAuth,
   },
   {
-    path: '/*',
+    path: '/app/*',
     element: <App />,
     loader: requireAuth,
   },
   {
     path: '*',
-    element: <Navigate to="/login" replace />,
+    element: <Navigate to="/" replace />,
   },
 ]);
 
