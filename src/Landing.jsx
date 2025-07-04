@@ -105,7 +105,7 @@ const Landing = () => {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>&copy; 2024 FinTrack. All rights reserved.</p>
+        <p>&copy; 2025 FinTrack. All rights reserved.</p>
       </footer>
     </div>
   );
