@@ -7,6 +7,7 @@ import homeIcon from "../src/assets/home.png"
 import StatsTable from "./StatsTable";
 import {fetchValuesByMonth} from "../jsFiles/dataFetchFunctions";
 import ThemeToggle from "./ThemeToggle";
+import LineGraph from "../src/LineGraph";
 
 function Stats(props){
     const [dataByMonth,setDataByMonth]=useState([]);
@@ -35,6 +36,7 @@ function Stats(props){
             <p className={style.currentMonth} onClick={monthPick}>Month: {monthList[month-1]}</p>
             {/* <div className={style.calendarIcon}><img src={calendarIcon} alt="calendar" onClick={monthPick}/></div> */}
             <div className={style.statsTableWrapper}>{dataByMonth.length>0?<StatsTable dataByMonth={dataByMonth}/>:<p className={style.noData}>No data Found</p>}</div>
+            {dataByMonth.length>0 && <div className={style.statsGraphWrapper}><LineGraph dailyData={dataByMonth} /></div>}
             {pickMonth&&<div className={style.monthsContainer}>
                         <ul>
                         <p>Pick a Month</p>
