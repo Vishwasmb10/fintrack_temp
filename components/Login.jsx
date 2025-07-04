@@ -37,9 +37,9 @@ export default function LoginPage() {
 
   return (
     <div className={`${styles.pageWrapper} ${isDarkMode ? styles.darkMode : ''}`}>
+      <div className={styles.themeToggleWrapper}><ThemeToggle /></div>
       <div className={styles.container}>
         <div className={styles.formWrapper}>
-          <ThemeToggle />
           <h1 className={styles.title}>FinTrack</h1>
           <form className={styles.form} onSubmit={handleAuth}>
             <div className={styles.inputGroup}>

@@ -32,7 +32,7 @@ function Stats(props){
         <>
           <div className={style.themeToggleWrapper}><ThemeToggle /></div>
           <div className={style.statsContainer}>
-            <Link to='/'><img src={homeIcon} alt="homeIcon" className={style.homeIcon}/></Link>
+            <Link to='/app'><img src={homeIcon} alt="homeIcon" className={style.homeIcon}/></Link>
             <p className={style.currentMonth} onClick={monthPick}>Month: {monthList[month-1]}</p>
             {/* <div className={style.calendarIcon}><img src={calendarIcon} alt="calendar" onClick={monthPick}/></div> */}
             <div className={style.statsTableWrapper}>{dataByMonth.length>0?<StatsTable dataByMonth={dataByMonth}/>:<p className={style.noData}>No data Found</p>}</div>
