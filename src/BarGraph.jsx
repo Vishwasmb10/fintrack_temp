@@ -58,7 +58,7 @@ const BarGraph = ({ dailyData }) => {
     grid: 'rgba(128,128,128,0.08)',
     tooltipBg: getCssVar('--bg-secondary') || '#222',
     tooltipBorder: getCssVar('--accent-color') || '#0d6efd',
-    tooltipText: isLight ? '#fff' : (getCssVar('--text-primary') || '#e6e6e6'),
+    tooltipText: isLight ? '#000' : (getCssVar('--text-primary') || '#e6e6e6'),
     btnInactive: getCssVar('--bg-secondary') || '#e9ecef',
   }), [isLight, themeKey]);
 
